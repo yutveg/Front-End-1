@@ -7,19 +7,12 @@ import {OrangeButton} from '../button/OrangeButton';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    width: "60vw",
+    backgroundColor: "#5B7331"
   },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+  }
 });
 
 export function SignInForm({ setState, email, password }) {
@@ -38,8 +31,8 @@ export function SignInForm({ setState, email, password }) {
   return(
     <Card className={classes.card}>
       <CardContent>
-        <h2>WELCOME BACK!</h2>
-        <span>Sign in with your email and password</span>
+        <h2 className={classes.title}>WELCOME BACK!</h2>
+        <span className={classes.subheading}>Sign in with your email and password</span>
         <form onSubmit={handleSubmit}>
           <FormInput 
             name="email"
