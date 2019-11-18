@@ -1,12 +1,30 @@
 import React from 'react';
-import './App.css';
 import SignUpForm from './components/sign-up-form.js';
 import { Route } from 'react-router-dom';
 
+
+import { Switch, Route } from 'react-router-dom';
+
+import './App.css';
+import { HomePage } from './pages/HomePage';
+import { UserPage } from './pages/UserPage';
+// import { Nav } from './components/Nav';
+import { SignInPage } from './pages/SignInPage';
+// import { SignUpPage } from './pages/SignInPage';
+// import { Footer } from './components/Footer';
+
+
 function App() {
   return (
-    <div className="App">
-        <Route exact path="/signup" component={SignUpForm} />
+    <div>
+      {/* <Nav /> */}
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/user' component={UserPage} />
+        <Route path='/sign-in' component={SignInPage} />
+        {/* <Route path='/sign-up' component={SignUpPage} /> */}
+      </Switch>
+      {/* <Footer /> */}
     </div>
   );
 }
