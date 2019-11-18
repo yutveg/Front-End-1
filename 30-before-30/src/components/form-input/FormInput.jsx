@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
+    backgroundColor: "white",
   },
 }));
 
@@ -24,7 +25,6 @@ export const FormInput = ({ handleChange, label, ...otherProps }) => {
       id="outlined-password-input"
       label={label}
       className={classes.textField}
-      type={type}
       margin="normal"
       variant="outlined"
     />
