@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     backgroundColor: "#FFE6CD",
     color: "#8F573B",
+    fontFamily: "‘Rubik’, sans-serif"
   }
 }));
 
