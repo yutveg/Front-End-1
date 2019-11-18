@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-const SignUpForm = ({values, touched, errors, status}) => {
+const SignUpForm = ({touched, errors, status}) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -37,7 +37,9 @@ const SignUpForm = ({values, touched, errors, status}) => {
                 <Field type="text" name="dateof30th" placeholder="Date Of 30th.." />
                 {touched.dateof30th && errors.dateof30th && <span className="errors">{errors.dateof30th}</span>}
             </div>
-            <button>LET'S GO!</button>
+
+            {/* ############# BUTTON TO BE ROUTED TO USERS PROFILE PAGE ############ */}
+            <button type="submit" >LET'S GO!</button>
         </Form>
         </div>
     )
@@ -49,7 +51,7 @@ const FormikSignUpForm = withFormik({
             username: username || "",
             email: email || "",
             password: password || "",
-            dateof30th: dateof30th
+            dateof30th: dateof30th || ""
         }
     },
     validationSchema: Yup.object().shape({
