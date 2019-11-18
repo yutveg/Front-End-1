@@ -4,23 +4,23 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import { HomePage } from './pages/HomePage';
 import { UserPage } from './pages/UserPage';
-import { Nav } from './components/Nav';
+// import { Nav } from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
 // import { SignUpPage } from './pages/SignInPage';
-import { Footer } from './components/Footer';
+// import { Footer } from './components/Footer';
 
 
 function App() {
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/user' component={UserPage} />
         <Route path='/sign-in' component={SignInPage} />
         {/* <Route path='/sign-up' component={SignUpPage} /> */}
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

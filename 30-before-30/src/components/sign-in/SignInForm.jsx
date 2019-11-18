@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+// Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import {FormInput} from '../form-input/FormInput';
-import {OrangeButton} from '../button/OrangeButton';
+// Components
+import { FormInput } from '../form-input/FormInput';
+import { OrangeButton } from '../button/OrangeButton';
 
 const useStyles = makeStyles({
   card: {
@@ -15,18 +18,30 @@ const useStyles = makeStyles({
   }
 });
 
-export function SignInForm({ setState, email, password }) {
+export function SignInForm({ username, password }) {
   const classes = useStyles();
+
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  });
 
   const handleSubmit = e => {
     e.preventDefault();
-    setState({ email: '', password: '' })
-  }
+    setUser({ username: '', password: '' })
+      axios
+        .post('https://project-30-before-30.herokuapp.com/api/auth/login')
+        .then(res => {
+          console.log("Login data returned", res.data);
+          setUser(res.data.results)
+        })
+        .catch(err => console.log("No data returned", err));
+    };
+
 
   const handleChange = e => {
-    const {value, name} = e.target;
-    setState({ [name]: value });
-  }
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   return(
     <Card className={classes.card}>
@@ -35,11 +50,11 @@ export function SignInForm({ setState, email, password }) {
         <span className={classes.subheading}>Sign in with your email and password</span>
         <form onSubmit={handleSubmit}>
           <FormInput 
-            name="email"
-            type="email"
+            name="username"
+            type="username"
             handleChange={handleChange}
-            label="Email"
-            value={email}
+            label="Username"
+            value={username}
             required />
           <FormInput 
             name="password"
