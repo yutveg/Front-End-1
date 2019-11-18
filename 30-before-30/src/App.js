@@ -16,7 +16,7 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/user/${user}' component={UserPage} />
+        <Route path='/user' component={UserPage} />
         <Route path='/sign-in' component={SignInPage} />
         {/* <Route path='/sign-up' component={SignUpPage} /> */}
       </Switch>

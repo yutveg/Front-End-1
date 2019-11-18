@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormInput } from '../form-input/FormInput';
 
-export class SignIn extends React.Component{
+export class SignInForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
