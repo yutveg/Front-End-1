@@ -1,49 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+// Material UI
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+// Components
 import { FormInput } from '../form-input/FormInput';
+import { OrangeButton } from '../button/OrangeButton';
 
-export class SignInForm extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    }
+const useStyles = makeStyles({
+  card: {
+    width: "60vw",
+    backgroundColor: "#5B7331"
+  },
+  title: {
+    fontSize: 14,
   }
+});
 
-  handleSubmit = e => {
+export function SignInForm({ username, password }) {
+  const classes = useStyles();
+
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  });
+
+  const handleSubmit = e => {
     e.preventDefault();
-    this.setState({ email: '', password: '' })
-  }
+    setUser({ username: '', password: '' })
+      axios
+        .post('https://project-30-before-30.herokuapp.com/api/auth/login')
+        .then(res => {
+          console.log("Login data returned", res.data);
+          setUser(res.data.results)
+        })
+        .catch(err => console.log("No data returned", err));
+    };
 
-  handleChange = e => {
-    const {value, name} = e.target;
-    this.setState({ [name]: value });
-  }
 
-  render(){
-    return(
-      <div className='sign-in'>
-        <h2>WELCOME BACK!</h2>
-        <span>Sign in with your email and password</span>
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-        <form onSubmit={this.handleSubmit}>
+  return(
+    <Card className={classes.card}>
+      <CardContent>
+        <h2 className={classes.title}>WELCOME BACK!</h2>
+        <span className={classes.subheading}>Sign in with your email and password</span>
+        <form onSubmit={handleSubmit}>
           <FormInput 
-            name="email"
-            type="email"
-            handleChange={this.handleChange}
-            label="Email"
-            value={this.state.email}
+            name="username"
+            type="username"
+            handleChange={handleChange}
+            label="Username"
+            value={username}
             required />
           <FormInput 
             name="password"
             type="password"
-            handleChange={this.handleChange}
+            handleChange={handleChange}
             label="Password"
-            value={this.state.password}
+            value={password}
             required />
-          <button type="submit">Sign In</button>
+          <OrangeButton size="small" type="submit">Sign In</OrangeButton>
         </form>
-      </div>
-    )
-  }
+      </CardContent>
+    </Card>
+  );
 }
