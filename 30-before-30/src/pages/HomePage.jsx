@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
-// import GridListTile from '@material-ui/core/GridListTile';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
-// import Link from '@material-ui/core/Link';
-// import tileData from './tileData';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +18,6 @@ const useStyles = makeStyles(theme => ({
   gridList: {
     width: 500,
     height: 450,
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
   titleBar: {
@@ -25,15 +25,27 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 export function HomePage() {
   const classes = useStyles();
+  const [listTile, setListTile] = useState([]);
 
+
+  useEffect(() => {
+    axios
+    .get('https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/public/all')
+    .then(res => {
+      console.log('Huzzah! Public list data returned', res.data);
+      setListTile(res.data);
+    })
+    .catch(err => {
+      console.log('Public list data not returned', err)
+    })
+  },[]);
   return (
     <div className={classes.root}>
     Welcome to the Home Page
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
-        {/* {tileData.map(tile => (
+        {listTile.map(tile => (
           <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
             <Link href="#" className={classes.link}>
               <img src={tile.img} alt={tile.title} />
@@ -44,7 +56,7 @@ export function HomePage() {
               />
             </Link>
           </GridListTile>
-        ))} */}
+        ))}
       </GridList>
     </div>
   );
