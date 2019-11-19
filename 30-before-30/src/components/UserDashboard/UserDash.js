@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Modal = (props) => {
+const UserDash = (props) => {
     const id = props.match.params.id;
     
-    // useEffect(() => {
-    //     axios 
-    //     .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
-    //     .then(res => {
-    //         console.log(res);
-    //     })
-    //     .catch(err => console.log(err));
-    // }, [id])
+    useEffect(() => {
+        axios 
+        .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err));
+    }, [id])
 
     return (
          <div className="modal">
@@ -29,8 +29,9 @@ const Modal = (props) => {
                      ))} */}
                  </ul>
              </div>
+             <button className="clear-all-done">CLEAR EVERYTHING ACCOMPLISHED</button>
          </div>
     )
 }
 
-export default Modal;
+export default UserDash;
