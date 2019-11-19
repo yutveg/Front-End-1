@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import SignUpForm from './components/sign-up-form.js';
+import Modal from './modal.js';
 import { Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-        <Route exact path="/signup" component={SignUpForm} />
+        <Route exact path="/home/:id" component={SignUpForm} />
     </div>
   );
 }
