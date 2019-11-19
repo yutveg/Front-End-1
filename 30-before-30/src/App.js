@@ -1,8 +1,4 @@
 import React from 'react';
-import SignUpForm from './components/sign-up-form.js';
-import { Route } from 'react-router-dom';
-
-
 import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
