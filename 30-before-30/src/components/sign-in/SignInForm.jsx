@@ -4,6 +4,8 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 // Components
 import { FormInput } from '../form-input/FormInput';
 import { OrangeButton } from '../button/OrangeButton';
@@ -65,6 +67,18 @@ export function SignInForm({ username, password }) {
             required />
           <OrangeButton size="small" type="submit">Sign In</OrangeButton>
         </form>
+        <Grid container>
+          <Grid item xs>
+            <Link href="#" variant="body2">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href="https://30B430.com/signup/" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );
