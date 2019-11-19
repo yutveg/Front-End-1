@@ -14,7 +14,7 @@ export function Logo() {
   const classes = useStyles();
   return(
     <>
-      <img className={classes.logo} src='https://i.ibb.co/tZM4DTB/Logo.png' />
+      <img className={classes.logo} src='https://i.ibb.co/tZM4DTB/Logo.png' alt='30 Before 30 logo' />
     </>
   )
 }

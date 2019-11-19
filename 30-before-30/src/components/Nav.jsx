@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: 'none',
-    fontSize: '1em',
     letterSpacing: '2px',
     color: '#8F573B',
     fontWeight: '700',
