@@ -107,7 +107,6 @@ const SignInForm = withFormik({
 
   validationSchema: Yup.object().shape({
     username: Yup.string()
-      .username("Username not valid")
       .required("Username is required"),
     password: Yup.string()
       .required("Password is required")
