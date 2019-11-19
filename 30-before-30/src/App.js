@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from './components/Modal.js';
+import Modal from './components/Modal';
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user.action'
@@ -10,7 +10,7 @@ import { UserPage } from './pages/UserPage';
 import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
 // import { SignUpPage } from './pages/SignInPage';
- import { Footer } from './components/Footer';
+import { Footer } from './components/Footer';
 
 function App() {
   const [userData, setUserData] = useState([]);
