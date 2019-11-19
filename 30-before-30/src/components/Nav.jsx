@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Logo } from '../../assets/Logo.svg';
+import { Logo } from '../assets/Logo.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Nav =()=>{
+export const Nav = () => {
   const classes = useStyles();
 
   return (
