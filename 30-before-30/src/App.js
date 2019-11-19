@@ -14,6 +14,7 @@ import { SignInPage } from './pages/SignInPage';
 function App() {
   return (
     <div>
+    <h2>Welcome to 30 before 30</h2>
       {/* <Nav /> */}
       <Switch>
         <Route exact path='/' component={HomePage} />
