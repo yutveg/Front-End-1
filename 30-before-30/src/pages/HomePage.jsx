@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Link from '@material-ui/core/Link';
-
-import tileData from './tileData';
+// import GridListTile from '@material-ui/core/GridListTile';
+// import GridListTileBar from '@material-ui/core/GridListTileBar';
+// import Link from '@material-ui/core/Link';
+// import tileData from './tileData';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +32,7 @@ export function HomePage() {
   return (
     <div className={classes.root}>
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
-        {tileData.map(tile => (
+        {/* {tileData.map(tile => (
           <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
             <Link href="#" className={classes.link}>
               <img src={tile.img} alt={tile.title} />
@@ -44,7 +43,7 @@ export function HomePage() {
               />
             </Link>
           </GridListTile>
-        ))}
+        ))} */}
       </GridList>
     </div>
   );
