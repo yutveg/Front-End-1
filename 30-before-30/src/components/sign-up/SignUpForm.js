@@ -20,11 +20,11 @@ const SignUpForm = ({touched, errors, status}) => {
                 {touched.username && errors.username && <span className="errors">{errors.username}</span>}
             </div>
 
-            <div>
+            {/*<div>
                 <label htmlFor="email">EMAIL:</label>
                 <Field type="email" name="email" placeholder="Email.." />
                 {touched.email && errors.email && <span className="errors">{errors.email}</span>}
-            </div>
+            </div>*/}
             
             <div>
                 <label htmlFor="password">PASSWORD:</label>
@@ -33,10 +33,10 @@ const SignUpForm = ({touched, errors, status}) => {
             </div>
 
             <div>
-                <label htmlFor="dateof30th">DATE OF 30TH BIRTHDAY:</label>
-                <Field type="text" name="dateof30th" placeholder="Date Of 30th.." />
-                {touched.dateof30th && errors.dateof30th && <span className="errors">{errors.dateof30th}</span>}
-            </div>
+                <label htmlFor="displayname">displayname</label>
+                <Field type="text" name="displayname" placeholder="displayname" />
+                {touched.displayname && errors.displayname && <span className="errors">{errors.displayname}</span>}
+            </div> 
 
             {/* ############# BUTTON TO BE ROUTED TO USERS PROFILE PAGE ############ */}
             <button type="submit" >LET'S GO!</button>
@@ -46,29 +46,29 @@ const SignUpForm = ({touched, errors, status}) => {
 }
 
 const FormikSignUpForm = withFormik({
-    mapPropsToValues({ username, email, password, dateof30th }) {
+    mapPropsToValues({ username, /*email,*/ password, displayname }) {
         return {
             username: username || "",
-            email: email || "",
+            //email: email || "",
             password: password || "",
-            dateof30th: dateof30th || ""
+            displayname: displayname || ""
         }
     },
-    validationSchema: Yup.object().shape({
-        username: Yup.string().required(),
-        email: Yup.string().required(),
-        password: Yup.string().required(),
-        dateof30th: Yup.string().required()
-    }),
-    handleSubmit(values, { setStatus }) {
+    // validationSchema: Yup.object().shape({
+    //     username: Yup.string().required(),
+    //     //email: Yup.string().required(),
+    //     password: Yup.string().required(),
+    //     displayname: Yup.string().required()
+    // }),
+    handleSubmit(values) {
         console.log(values);
         axios
-        .post("https://project-30-before-30.herokuapp.com/api/auth/register", values)
+        .post("https://bucketlist-30-before-30.herokuapp.com/api/auth/register", values)
         .then(res => {
-            setStatus(res.data);
-            console.log(res);
+            const token = res
+            console.log(token);
         })
-        .catch(error => console.log(error.response));
+        .catch(error => console.log(error));
     }
 })(SignUpForm);
 
