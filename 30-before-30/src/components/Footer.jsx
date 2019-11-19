@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFacebookF, faTwitter, faInstagram, faPinterestP } from '@fortawesome/free-solid-svg-icons';
 import { makeStyles } from '@material-ui/core/styles';
-// import { Logo } from '../assets/Logo.png';
+import { Logo } from './Logo';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '8vw',
+    height: 160,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -17,17 +17,19 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     letterSpacing: '2px',
     color: '#8F573B',
+    fontWeight: '700',
+    fontSize: '.8em',
+    margin: '4px'
     // margin: '2.5vw'
   },
   // link:hover {
   //   opacity: '0.7'
   // },
   linksContainerL: {
-    margin: '5vw, 13vw',
+    margin: '13vw',
     textAlign: 'left',
+    display: 'flex',
     flexDirection: 'column',
-
-
   },
   logoSocial: {
     width: '18vw',
@@ -35,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '5vw, 13vw'
+    margin: '5vw'
   },
   logo: {
     margin: 'auto, 5vw',
@@ -57,10 +59,10 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
   },
   linksContainerR: {
-    margin: '5vw, 13vw',
+    margin: '13vw',
     textAlign: 'right',
+    display: 'flex',
     flexDirection: 'column',
-
   },
 }));
 
@@ -83,9 +85,9 @@ export const Footer = () => {
       </div>
 
       <div className={classes.logoSocial}>
-        {/* <Link className={classes.link} to="/">
+        <Link className={classes.link} to="/">
           <Logo className={classes.logo} />
-        </Link> */}
+        </Link>
         <div className={classes.socialCircles}>
           <Link className={classes.link} href="https://www.facebook.com/">
             {/* <FontAwesomeIcon icon={faFacebookF} className={classes.social} /> */}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
 import { makeStyles } from '@material-ui/core/styles';
-// import { Logo } from '../assets/Logo.png';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,10 +12,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     background: '#FFE6CD',
   },
-  logo: {
-    margin: 'auto, 5vw',
-    width: '18vw'
-  },
+
   linksContainer: {
     width: '30vw',
     display: 'flex',
@@ -24,9 +22,11 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: 'none',
-    fontSize: '1.4em',
+    fontSize: '1em',
     letterSpacing: '2px',
     color: '#8F573B',
+    fontWeight: '700',
+    fontSize: '.8em',
     // margin: '2.5vw'
   }
 }));
@@ -36,8 +36,8 @@ function Nav() {
 
   return (
     <div className={classes.root}>
-      <Link className={classes.logoContainer} to="/">
-        {/* <Logo className={classes.logo} /> */}
+      <Link className={classes.link} to="/">
+        <Logo className={classes.logo} />
       </Link>
 
       <div className={classes.linksContainer}>
