@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export function HomePage() {
   const classes = useStyles();
-  const [listTile, setListTile] = useState([]);
+  const [pubList, setPubList] = useState([]);
 
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function HomePage() {
     .get('https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/public/all')
     .then(res => {
       console.log('Huzzah! Public list data returned', res.data);
-      setListTile(res.data);
+      setPubList(res.data);
     })
     .catch(err => {
       console.log('Public list data not returned', err)
@@ -45,12 +45,12 @@ export function HomePage() {
     <div className={classes.root}>
     Welcome to the Home Page
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
-        {listTile.map(tile => (
-          <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
+        {pubList.map(list => (
+          <GridListTile key={list.id} cols={list.featured ? 3 : 1} rows={list.featured ? 2 : 1}>
             <Link href="#" className={classes.link}>
-              <img src={tile.img} alt={tile.title} />
+              <img src={list.img} alt={list.title} />
               <GridListTileBar
-                title={tile.title}
+                title={list.title}
                 titlePosition="top"
                 className={classes.titleBar}
               />
