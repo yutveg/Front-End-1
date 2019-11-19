@@ -83,9 +83,9 @@ export const Footer = () => {
       </div>
 
       <div className={classes.logoSocial}>
-        <Link className={classes.link} to="/">
+       {/*} <Link className={classes.link} to="/">
           <Logo className={classes.logo} />
-        </Link>
+  </Link> */}
         <div className={classes.socialCircles}>
           <Link className={classes.link} href="https://www.facebook.com/">
             {/* <FontAwesomeIcon icon={faFacebookF} className={classes.social} /> */}

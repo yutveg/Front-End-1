@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Logo } from '../assets/Logo.svg';
+//import { Logo } from '../assets/Logo.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,28 +30,31 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Nav = () => {
+function Nav() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-    <Link className={classes.logoContainer} to="/">
-      <Logo className={classes.logo} />
-    </Link>
-    <div className={classes.linksContainer}>
-      <Link className={classes.link} to="/">
-        HOME
-      </Link>
-      <Link className={classes.link} to="/about">
-        ABOUT
-      </Link>
-      <Link className={classes.link} to="/sign-in">
-        SIGN IN
-      </Link>
-      <Link className={classes.link} to="/sign-up">
-        SIGN UP
-      </Link>
+      {/*<Link className={classes.logoContainer} to="/">
+        <Logo className={classes.logo} />
+  </Link> */}
+
+      <div className={classes.linksContainer}>
+        <Link className={classes.link} to="/">
+          HOME
+        </Link>
+        <Link className={classes.link} to="/about">
+          ABOUT
+        </Link>
+        <Link className={classes.link} to="/sign-in">
+          SIGN IN
+        </Link>
+        <Link className={classes.link} to="/sign-up">
+          SIGN UP
+        </Link>
+      </div>
     </div>
-  </div>
 );
   }
+
+  export default Nav

@@ -1,8 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { Nav } from '../components/Nav';
-import { Footer } from '../components/Footer';
 import { SignInForm } from '../components/sign-in/SignInForm';
 
 const useStyles = makeStyles(theme => ({
@@ -28,12 +25,10 @@ export function SignInPage() {
 
   return (
     <>
-      <Nav />
         <div className={classes.root}>
           <SignInForm className={classes.form} />
           <img className={classes.formImg} />
         </div>
-      <Footer />
     </>
   )
 }
