@@ -13,7 +13,9 @@ import { FormInput } from '../form-input/FormInput';
 const useStyles = makeStyles(theme => ({
   card: {
     width: '30vw',
-    backgroundColor: '#5B7331'
+    backgroundColor: '#5B7331',
+    borderRadius: 0,
+
   },
   cardContent: {
     margin: '2.5vw'
@@ -35,6 +37,8 @@ const useStyles = makeStyles(theme => ({
     width: '20vw',
     marginTop: '.5vw',
     marginBottom: '.5vw',
+    borderRadius: 0,
+
 
   },
   button: {

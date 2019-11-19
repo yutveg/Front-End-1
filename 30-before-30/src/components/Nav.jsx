@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-//import { Logo } from '../assets/Logo.svg';
+// import { Logo } from '../assets/Logo.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '8vw',
+    height: 75,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -20,10 +20,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 'auto, 5vw'
+    margin: '5vw'
   },
   link: {
     textDecoration: 'none',
+    fontSize: '1.4em',
     letterSpacing: '2px',
     color: '#8F573B',
     // margin: '2.5vw'
@@ -35,9 +36,9 @@ function Nav() {
 
   return (
     <div className={classes.root}>
-      {/*<Link className={classes.logoContainer} to="/">
-        <Logo className={classes.logo} />
-  </Link> */}
+      <Link className={classes.logoContainer} to="/">
+        {/* <Logo className={classes.logo} /> */}
+      </Link>
 
       <div className={classes.linksContainer}>
         <Link className={classes.link} to="/">
