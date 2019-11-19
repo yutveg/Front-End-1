@@ -9,7 +9,6 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 // Components
 import { FormInput } from '../form-input/FormInput';
-import { OrangeButton } from '../button/OrangeButton';
 
 const useStyles = makeStyles(theme => ({
   card: {
