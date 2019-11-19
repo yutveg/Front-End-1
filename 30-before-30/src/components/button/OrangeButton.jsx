@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     color: "#8F573B",
     fontFamily: "‘Rubik’, sans-serif",
     letterSpacing: '2px'
-
+    
   }
 }));
 
