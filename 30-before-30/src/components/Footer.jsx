@@ -5,7 +5,6 @@ import { faFacebookF, faTwitter, faInstagram, faPinterestP } from '@fortawesome/
 import { makeStyles } from '@material-ui/core/styles';
 import { Logo } from '../../assets/Logo.svg';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     height: '8vw',
@@ -88,16 +87,16 @@ export const Nav =()=>{
           <Logo className={classes.logo} />
         </Link>
         <div className={classes.socialCircles}>
-          <Link className={classes.link} to="/">
+          <Link className={classes.link} href="https://www.facebook.com/">
             <FontAwesomeIcon icon={faFacebookF} className={classes.social} />
           </Link>
-          <Link className={classes.link} to="/">
+          <Link className={classes.link} href="https://www.instagram.com/">
             <FontAwesomeIcon icon={faInstagram} className={classes.social} />
           </Link>
-          <Link className={classes.link} to="/">
+          <Link className={classes.link} href="https://www.twitter.com/">
             <FontAwesomeIcon icon={faTwitter} className={classes.social} />
           </Link>
-          <Link className={classes.link} to="/">
+          <Link className={classes.link} href="https://www.pinterest.com/">
             <FontAwesomeIcon icon={faPinterestP} className={classes.social} />
           </Link>
         </div>
