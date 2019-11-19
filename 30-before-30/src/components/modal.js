@@ -26,9 +26,9 @@ const Modal = (props) => {
                  </div>
 
                  <ul>
-                     {userData.bucketlist.map(item => (
+                     {/* {userData.bucketlist.map(item => (
                          <li>{item}</li>
-                     ))}
+                     ))} */}
                  </ul>
              </div>
          </div>
