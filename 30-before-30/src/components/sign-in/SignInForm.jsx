@@ -6,19 +6,47 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 // Components
 import { FormInput } from '../form-input/FormInput';
-import { OrangeButton } from '../button/OrangeButton';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
-    width: "60vw",
-    backgroundColor: "#5B7331"
+    width: '30vw',
+    backgroundColor: '#5B7331'
+  },
+  cardContent: {
+    margin: '2.5vw'
   },
   title: {
+    fontSize: 20,
+    letterSpacing: '2px',
+    marginBottom: '2vw',
+    color: '#FFE6CD',
+  },
+  subheading: {
     fontSize: 14,
+    letterSpacing: '2px',
+    marginBottom: '1.5vw',
+    color: '#FFE6CD',
+
+  },
+  input: {
+    width: '20vw',
+    marginTop: '.5vw',
+    marginBottom: '.5vw',
+
+  },
+  button: {
+    marginTop: '2vw',
+    width: '12vw',
+    backgroundColor: "#FFE6CD",
+    color: "#8F573B",
+    fontFamily: "‘Rubik’, sans-serif",
+    letterSpacing: '2px',
+    borderRadius: 0,
   }
-});
+}));
 
 export function SignInForm({ username, password }) {
   const classes = useStyles();
@@ -47,11 +75,12 @@ export function SignInForm({ username, password }) {
 
   return(
     <Card className={classes.card}>
-      <CardContent>
+      <CardContent lassName={classes.cardContent}>
         <h2 className={classes.title}>WELCOME BACK!</h2>
         <span className={classes.subheading}>Sign in with your email and password</span>
         <form onSubmit={handleSubmit}>
           <FormInput 
+            className={classes.input}
             name="username"
             type="username"
             handleChange={handleChange}
@@ -59,13 +88,20 @@ export function SignInForm({ username, password }) {
             value={username}
             required />
           <FormInput 
+            className={classes.input}
             name="password"
             type="password"
             handleChange={handleChange}
             label="Password"
             value={password}
             required />
-          <OrangeButton size="small" type="submit">Sign In</OrangeButton>
+          <Button 
+            className={classes.button}
+            variant="contained"
+            size="medium"
+            type="submit">
+              Sign In
+          </Button>
         </form>
         <Grid container>
           <Grid item xs>
@@ -74,7 +110,9 @@ export function SignInForm({ username, password }) {
             </Link>
           </Grid>
           <Grid item>
-            <Link href="https://30B430.com/signup/" variant="body2">
+            <Link 
+              // href="https://30B430.com/signup/"
+              variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
           </Grid>
