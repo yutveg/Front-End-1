@@ -12,41 +12,58 @@ import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: '30vw',
+    width: '500px',
     backgroundColor: '#5B7331',
     borderRadius: 0,
     margin: '5vw',
   },
   cardContent: {
-    margin: '2.5vw'
+    margin: '50px',
+    padding: '0px 0px 0px 0px',
   },
   title: {
-    fontSize: 20,
-    letterSpacing: '2px',
-    marginBottom: '2vw',
+    letterSpacing: '2.5px',
     color: '#FFE6CD',
+    fontWeight: '700',
+    fontSize: '2em',
+    margin: 0
   },
   subheading: {
-    fontSize: 14,
-    letterSpacing: '2px',
-    marginBottom: '1.5vw',
+    letterSpacing: '1.5px',
     color: '#FFE6CD',
+    fontWeight: '500',
+    fontSize: '1em',
+    marginTop: '10px',
+    marginBottom: '15px',
+  },
+  // form: {
+  //   width: '30vw',
 
-  },
-  input: {
-    width: '20vw',
-    marginTop: '.5vw',
-    marginBottom: '.5vw',
+  // },
+  field: {
+    width: '395px',
+    height:'30px',
+    marginTop: '10px',
+    marginBottom: '10px',
     borderRadius: 0,
-  },
-  button: {
-    marginTop: '2vw',
-    width: '12vw',
-    backgroundColor: "#FFE6CD",
     color: "#8F573B",
     fontFamily: "‘Rubik’, sans-serif",
     letterSpacing: '2px',
+    border: 'none',
+  },
+  button: {
+    width: '220px',
+    height:'40px',
+    border: 'none',
+    backgroundColor: "#FFE6CD",
+    fontFamily: "‘Rubik’, sans-serif",
+    letterSpacing: '2px',
     borderRadius: 0,
+    fontSize: '1em',
+    letterSpacing: '2px',
+    color: '#8F573B',
+    fontWeight: '700',
+    fontSize: '.8em',
   },
   link: {
     textDecoration: 'none',
@@ -63,17 +80,17 @@ function LoginForm({ values, errors, touched }) {
 
   return (
     <Card className={classes.card}>
-      <CardContent lassName={classes.cardContent}>
-        <h2 className={classes.title}>WELCOME BACK!</h2>
+      <CardContent className={classes.cardContent}>
+        <p className={classes.title}>WELCOME BACK!</p>
         <span className={classes.subheading}>Sign in with your username and password</span>
-        <Form>
+        <Form className={classes.form}>
           <div>
             {touched.username && errors.username && <p>{errors.username}</p>}
-            <Field type="username" name="username" placeholder="Username" />
+            <Field className={classes.field} type="username" name="username" placeholder="Username" />
           </div>
           <div>
             {touched.password && errors.password && <p>{errors.password}</p>}
-            <Field type="password" name="password" placeholder="Password" />
+            <Field className={classes.field} type="password" name="password" placeholder="Password" />
           </div>
           <button className={classes.button} type="submit">LET'S GO!</button>
         </Form>
