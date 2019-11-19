@@ -14,20 +14,22 @@ const Modal = (props) => {
     // }, [id])
 
     return (
-         <div className="modal">
-             <div className="modal-img-container"></div>
-             <div className="modal-grid-container">
-                 <div>
-                     <img src="{userData.profileimg}" alt="User Headshot" />
-                     <h2>John Shultz</h2>
-                     <h2>Deadline: 10/10/10</h2>
-                 </div>
+        <div className="modal-cover">
+             <div className="modal">
+                 <div className="modal-img-container"></div>
+                 <div className="modal-grid-container">
+                     <div>
+                         <img src="{userData.profileimg}" alt="User Headshot" />
+                         <h2>John Shultz</h2>
+                         <h2>Deadline: 10/10/10</h2>
+                     </div>
 
-                 <ul>
-                     {/* {userData.bucketlist.map(item => (
-                         <li>{item}</li>
-                     ))} */}
-                 </ul>
+                     <ul>
+                         {/* {userData.bucketlist.map(item => (
+                             <li>{item}</li>
+                         ))} */}
+                     </ul>
+                 </div>
              </div>
          </div>
     )

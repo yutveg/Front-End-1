@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Logo } from '../../assets/Logo.svg';
+import { Logo } from '../assets/Logo.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,13 +30,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Nav =()=>{
+const Nav =()=>{
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
     <Link className={classes.logoContainer} to="/">
-      <Logo className={classes.logo} />
+      {/* <Logo className={classes.logo} /> */}
     </Link>
     <div className={classes.linksContainer}>
       <Link className={classes.link} to="/">
@@ -54,4 +54,6 @@ export const Nav =()=>{
     </div>
   </div>
 );
-  }
+}
+
+export default Nav;

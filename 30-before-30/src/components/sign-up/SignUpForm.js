@@ -32,11 +32,11 @@ const SignUpForm = ({touched, errors, status}) => {
                 {touched.password && errors.password && <span className="errors">{errors.password}</span>}
             </div>
 
-            <div>
+            {/* <div>
                 <label htmlFor="dateof30th">DATE OF 30TH BIRTHDAY:</label>
                 <Field type="text" name="dateof30th" placeholder="Date Of 30th.." />
                 {touched.dateof30th && errors.dateof30th && <span className="errors">{errors.dateof30th}</span>}
-            </div>
+            </div> */}
 
             {/* ############# BUTTON TO BE ROUTED TO USERS PROFILE PAGE ############ */}
             <button type="submit" >LET'S GO!</button>
@@ -63,7 +63,7 @@ const FormikSignUpForm = withFormik({
     handleSubmit(values, { setStatus }) {
         console.log(values);
         axios
-        .post("https://project-30-before-30.herokuapp.com/api/auth/register", values)
+        .post("https://thirtybeforethirty.herokuapp.com/api/auth/register", values)
         .then(res => {
             setStatus(res.data);
             console.log(res);
