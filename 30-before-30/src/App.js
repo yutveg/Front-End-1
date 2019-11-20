@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Nav /> 
       <Switch>
-        <Route exact path="/home/test" render={props => <Modal {...props} userData={userData} /> } />
+        {/*<Route exact path="/home/test" render={props => <Modal {...props} userData={userData} /> } />*/} 
         <Route exact path='/' component={HomePage} />
         <Route path='/user' component={UserPage} />
         <Route path='/sign-in' component={SignInPage} />
