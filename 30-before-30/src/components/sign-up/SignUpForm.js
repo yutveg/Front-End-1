@@ -64,7 +64,7 @@ const FormikSignUpForm = withFormik({
     handleSubmit(values) {
         console.log(values);
         axios
-        .post("https://project-30-before-30.herokuapp.com/api/auth/register", values)
+        .post("https://bucketlist-30-before-30.herokuapp.com/api/auth/register", values)
         .then(res => {
             const token = res
             console.log(token);

@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage';
 import { UserPage } from './pages/UserPage';
 import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
+import UserDash from './components/UserDashboard/UserDash.js'
 import { SignUpPage } from './pages/SignUpPage';
 import { Footer } from './components/Footer';
 
@@ -19,9 +20,9 @@ function App() {
     <div className="App">
       <Nav /> 
       <Switch>
-        {/*<Route exact path="/home/test" render={props => <Modal {...props} userData={userData} /> } />*/} 
+        <Route exact path="/test/:id" render={props => <Modal {...props} /> } /> 
         <Route exact path='/' component={HomePage} />
-        <Route path='/user' component={UserPage} />
+        <Route path='/user/:id' component={UserDash} />
         <Route path='/sign-in' component={SignInPage} />
         <Route path='/sign-up' component={SignUpPage} />
         <Route path="/USERBUCKETLIST/:id" component={Modal} />
