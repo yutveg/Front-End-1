@@ -9,6 +9,8 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 // Components
 import { FormInput } from '../form-input/FormInput';
+import { Redirect } from 'react-router-dom';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -59,15 +61,24 @@ export function SignInForm({ username, password }) {
     username: '',
     password: ''
   });
+  const {isAuthenticated} = false;
+if (isAuthenticated) {
+  return <Redirect to='/HomePage' />;
+}
 
   const handleSubmit = e => {
     e.preventDefault();
-    setUser({ username: '', password: '' })
+    //setUser({ username: '', password: '' })
+    console.log(user)
       axios
-        .post('https://project-30-before-30.herokuapp.com/api/auth/login')
+        .post('https://project-30-before-30.herokuapp.com/api/auth/login', user)
         .then(res => {
-          console.log("Login data returned", res.data);
+          console.log(res);
           setUser(res.data.results)
+          console.log(user)
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('userId', res.data.userId)
+          //props.history.push('/HomePage')
         })
         .catch(err => console.log("No data returned", err));
     };
