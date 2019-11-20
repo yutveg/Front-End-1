@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -89,22 +89,23 @@ if (isAuthenticated) {
   return <Redirect to='/HomePage' />;
 }
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    //setUser({ username: '', password: '' })
-    console.log(user)
-      axios
-        .post('https://project-30-before-30.herokuapp.com/api/auth/login', user)
-        .then(res => {
-          console.log(res);
-          setUser(res.data.results)
-          console.log(user)
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('userId', res.data.userId)
-          //props.history.push('/HomePage')
-        })
-        .catch(err => console.log("No data returned", err));
-    };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   //setUser({ username: '', password: '' })
+  //   console.log('user',user)
+  //     axios
+  //       .post('https://project-30-before-30.herokuapp.com/api/auth/login', user)
+  //       .then(res => {
+  //         console.log(user)
+  //         console.log(res);
+  //         setUser(res.data.results)
+  //         console.log(user)
+  //         localStorage.setItem('token', res.data.token)
+  //         localStorage.setItem('userId', res.data.userId)
+  //         //history.push('/HomePage')
+  //       })
+  //       .catch(err => console.log("No data returned", err));
+  //   };
 
 
   const handleChange = e => {
@@ -164,9 +165,13 @@ const SignInForm = withFormik({
 
   handleSubmit(values, { resetForm, setSubmitting }) {
       axios
-        .post('https://bucketlist-30-before-30.herokuapp.com/api/auth/login', values)
+        .post('https://project-30-before-30.herokuapp.com/api/auth/login', values)
         .then(res => {
-          console.log(res);
+          console.log(values)
+          const token = res.data.token
+          console.log(token);
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('userId', res.data.userId)
           resetForm();
           setSubmitting(false);
         })
