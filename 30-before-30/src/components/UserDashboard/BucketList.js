@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import BucketItem from './BucketItem.js';
 
 const BucketList = (props) => {
+    const [list, setList] = useState([]);
 
     useEffect(() => {
         axios 
-        .get(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists`)
+        .get(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/${props.id}`)
         .then(res => {
             console.log(res);
         })
@@ -14,8 +16,12 @@ const BucketList = (props) => {
     
     return (
         <ul>
-            
-        </ul>
+        {props.list.map(p => (
+          <li className="pokemon" key={p.name}>
+            {p.name}
+          </li>
+        ))}
+      </ul>
     )
 }
 

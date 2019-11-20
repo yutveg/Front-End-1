@@ -35,7 +35,7 @@ const UserDash = (props) => {
     }
 
     return (
-         <div className="user-dash-wrapper">
+         <div to={`/user/${id}`} className="user-dash-wrapper">
              <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
              <button onClick={handleSubmit} className="public-button">PUBLIC</button>
              <div className="user-dash-grid-container">

@@ -10,7 +10,9 @@ function AddItemForm(props) {
         <Form className="add-item-form">
             <label htmlFor="additem">Add Item:</label>
             <Field name="additem" type="text" placeholder="Add item.." />
-            <button type="submit" className="add-item-button">Update List</button>
+            <div>
+                <button type="submit" className="add-item-button">Update List</button>
+            </div>
         </Form>
     )
 }
