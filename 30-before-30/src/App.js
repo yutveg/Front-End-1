@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
 // import { SignUpPage } from './pages/SignInPage';
 import { Footer } from './components/Footer';
+import ToDoList from './components/ToDoList'
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -32,13 +33,12 @@ function App() {
 }
 
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
-// //for children
-// const mapStateToProps = state => {
-//   currentUser = state.user.currentUser
 
-// }
-// export default connect(mapStateToProps)(App);
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

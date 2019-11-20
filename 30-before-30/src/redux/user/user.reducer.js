@@ -3,6 +3,8 @@ const INITIAL_STATE = {
 }
 
 const userReducer = (state=INITIAL_STATE, action) => {
+  console.log('reducer',state)
+  console.log('reducer',action)
   switch(action.type){
     case ''://set current user propbably
       return {

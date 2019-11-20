@@ -32,7 +32,7 @@ export function HomePage() {
 
   useEffect(() => {
     axios
-    .get('https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/public/all')
+    .get('https://project-30-before-30.herokuapp.com/api/bucketlists/public/all')
     .then(res => {
       console.log('Huzzah! Public list data returned', res.data);
       setPubList(res.data);

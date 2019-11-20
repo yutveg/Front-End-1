@@ -25,7 +25,7 @@ const UserDash = (props) => {
 
                  <ul>
                      {/* {userData.bucketlist.map(item => (
-                         <li>{item}</li>
+                        <li>{item}</li>
                      ))} */}
                  </ul>
              </div>
