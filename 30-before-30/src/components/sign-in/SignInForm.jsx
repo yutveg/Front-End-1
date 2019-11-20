@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
 // Components
 import { FormInput } from '../form-input/FormInput';
 import { Redirect } from 'react-router-dom';
@@ -14,47 +15,67 @@ import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: '30vw',
+    width: '500px',
     backgroundColor: '#5B7331',
     borderRadius: 0,
-
+    margin: '5vw',
   },
   cardContent: {
-    margin: '2.5vw'
+    margin: '50px',
+    padding: '0px 0px 0px 0px',
   },
   title: {
-    fontSize: 20,
-    letterSpacing: '2px',
-    marginBottom: '2vw',
+    letterSpacing: '2.5px',
     color: '#FFE6CD',
+    fontWeight: '700',
+    fontSize: '2em',
+    margin: 0
   },
   subheading: {
-    fontSize: 14,
-    letterSpacing: '2px',
-    marginBottom: '1.5vw',
+    letterSpacing: '1.5px',
     color: '#FFE6CD',
-
+    fontWeight: '500',
+    fontSize: '1em',
+    marginTop: '10px',
+    marginBottom: '15px',
   },
-  input: {
-    width: '20vw',
-    marginTop: '.5vw',
-    marginBottom: '.5vw',
+  // form: {
+  //   width: '30vw',
+
+  // },
+  field: {
+    width: '395px',
+    height:'30px',
+    marginTop: '10px',
+    marginBottom: '10px',
     borderRadius: 0,
-
-
-  },
-  button: {
-    marginTop: '2vw',
-    width: '12vw',
-    backgroundColor: "#FFE6CD",
     color: "#8F573B",
     fontFamily: "‘Rubik’, sans-serif",
     letterSpacing: '2px',
+    border: 'none',
+  },
+  button: {
+    width: '220px',
+    height:'40px',
+    border: 'none',
+    backgroundColor: "#FFE6CD",
+    fontFamily: "‘Rubik’, sans-serif",
+    letterSpacing: '2px',
     borderRadius: 0,
+    color: '#8F573B',
+    fontWeight: '700',
+    fontSize: '.8em',
+  },
+  link: {
+    textDecoration: 'none',
+    letterSpacing: '2px',
+    color: '#FFE6CD',
+    fontWeight: '700',
+    fontSize: '.8em',
   }
 }));
 
-export function SignInForm({ username, password }) {
+function LoginForm({ values, errors, touched }) {
   const classes = useStyles();
 
   const [user, setUser] = useState({
@@ -90,43 +111,30 @@ if (isAuthenticated) {
 
   return(
     <Card className={classes.card}>
-      <CardContent lassName={classes.cardContent}>
-        <h2 className={classes.title}>WELCOME BACK!</h2>
-        <span className={classes.subheading}>Sign in with your email and password</span>
-        <form onSubmit={handleSubmit}>
-          <FormInput 
-            className={classes.input}
-            name="username"
-            type="username"
-            handleChange={handleChange}
-            label="Username"
-            value={username}
-            required />
-          <FormInput 
-            className={classes.input}
-            name="password"
-            type="password"
-            handleChange={handleChange}
-            label="Password"
-            value={password}
-            required />
-          <Button 
-            className={classes.button}
-            variant="contained"
-            size="medium"
-            type="submit">
-              Sign In
-          </Button>
-        </form>
+      <CardContent className={classes.cardContent}>
+        <p className={classes.title}>WELCOME BACK!</p>
+        <span className={classes.subheading}>Sign in with your username and password</span>
+        <Form className={classes.form}>
+          <div>
+            {touched.username && errors.username && <p>{errors.username}</p>}
+            <Field className={classes.field} type="username" name="username" placeholder="Username" />
+          </div>
+          <div>
+            {touched.password && errors.password && <p>{errors.password}</p>}
+            <Field className={classes.field} type="password" name="password" placeholder="Password" />
+          </div>
+          <button className={classes.button} type="submit">LET'S GO!</button>
+        </Form>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <Link className={classes.link} href="#" variant="body2">
               Forgot password?
             </Link>
           </Grid>
           <Grid item>
             <Link 
-              // href="https://30B430.com/signup/"
+              className={classes.link}
+              href="#"
               variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
@@ -136,3 +144,35 @@ if (isAuthenticated) {
     </Card>
   );
 }
+
+const SignInForm = withFormik({
+  mapPropsToValues({ username, password, tos, meal }) {
+    return {
+      username: username || "",
+      password: password || "",
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    username: Yup.string()
+      .required("Username is required"),
+    password: Yup.string()
+      .required("Password is required")
+  }),
+
+  handleSubmit(values, { resetForm, setSubmitting }) {
+      axios
+        .post('https://bucketlist-30-before-30.herokuapp.com/api/auth/login', values)
+        .then(res => {
+          console.log(res);
+          resetForm();
+          setSubmitting(false);
+        })
+        .catch(err => {
+          console.log(err);
+          setSubmitting(false);
+        });
+    }
+  })(LoginForm);
+
+export default SignInForm;
