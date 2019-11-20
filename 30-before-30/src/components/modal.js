@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Modal = (props) => {
     const id = props.match.params.id;
@@ -14,7 +15,7 @@ const Modal = (props) => {
     // }, [id])
 
     return (
-        <div className="modal-cover">
+        <Link to="/" className="modal-cover">
              <div className="modal">
                  <div className="modal-img-container"></div>
                  <div className="modal-grid-container">
@@ -31,7 +32,7 @@ const Modal = (props) => {
                      </ul>
                  </div>
              </div>
-         </div>
+         </Link>
     )
 }
 

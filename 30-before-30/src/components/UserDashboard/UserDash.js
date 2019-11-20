@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import BucketItem from './BucketItem.js';
+import uhm from '../../assets/uhm.jpg';
+import testphotoforapp from '../../assets/testphotoforapp.jpg';
 const UserDash = (props) => {
     const id = props.match.params.id;
     
     useEffect(() => {
         axios 
-        .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
+        .get(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/1`)
         .then(res => {
             console.log(res);
         })
@@ -14,22 +16,25 @@ const UserDash = (props) => {
     }, [id])
 
     return (
-         <div className="modal">
-             <div className="modal-img-container"></div>
-             <div className="modal-grid-container">
+         <div className="user-dash-wrapper">
+             <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
+             <div className="user-dash-grid-container">
                  <div>
-                     <img src="{userData.profileimg}" alt="User Headshot" />
-                     <h2>John Shultz</h2>
-                     <h2>Deadline: 10/10/10</h2>
+                     <img className="prof-pic" src={uhm} alt="User Headshot" />
+                     <h1>John Shultz</h1>
                  </div>
 
                  <ul>
+                     <li>FILLERFILLERFILLER</li>
+                     <li>FILLERFILLERFILLER</li>
+                     <li>FILLERFILLERFILLER</li>
+                     <li>FILLERFILLERFILLER</li>
                      {/* {userData.bucketlist.map(item => (
                          <li>{item}</li>
                      ))} */}
                  </ul>
              </div>
-             <button className="clear-all-done">CLEAR EVERYTHING ACCOMPLISHED</button>
+             <button className="user-dash-button">ADD BUCKETLIST ITEM</button>
          </div>
     )
 }

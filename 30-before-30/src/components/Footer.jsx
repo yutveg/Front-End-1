@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faTwitter, faInstagram, faPinterestP } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faFacebookF, faTwitter, faInstagram, faPinterestP } from '@fortawesome/free-solid-svg-icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { Logo } from '../../assets/Logo.svg';
+import { Logo } from '../assets/Logo.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Nav =()=>{
+export const Footer = () => {
   const classes = useStyles();
 
   return (
@@ -83,21 +83,21 @@ export const Nav =()=>{
       </div>
 
       <div className={classes.logoSocial}>
-        <Link className={classes.link} to="/">
+       {/*} <Link className={classes.link} to="/">
           <Logo className={classes.logo} />
-        </Link>
+  </Link> */}
         <div className={classes.socialCircles}>
           <Link className={classes.link} href="https://www.facebook.com/">
-            <FontAwesomeIcon icon={faFacebookF} className={classes.social} />
+            {/* <FontAwesomeIcon icon={faFacebookF} className={classes.social} /> */}
           </Link>
           <Link className={classes.link} href="https://www.instagram.com/">
-            <FontAwesomeIcon icon={faInstagram} className={classes.social} />
+            {/* <FontAwesomeIcon icon={faInstagram} className={classes.social} /> */}
           </Link>
           <Link className={classes.link} href="https://www.twitter.com/">
-            <FontAwesomeIcon icon={faTwitter} className={classes.social} />
+            {/* <FontAwesomeIcon icon={faTwitter} className={classes.social} /> */}
           </Link>
           <Link className={classes.link} href="https://www.pinterest.com/">
-            <FontAwesomeIcon icon={faPinterestP} className={classes.social} />
+            {/* <FontAwesomeIcon icon={faPinterestP} className={classes.social} /> */}
           </Link>
         </div>
       </div>
