@@ -9,7 +9,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 // Components
-import { FormInput } from '../form-input/FormInput';
 import { Redirect } from 'react-router-dom';
 
 
@@ -108,9 +107,9 @@ if (isAuthenticated) {
   //   };
 
 
-  const handleChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  // const handleChange = e => {
+  //   setUser({ ...user, [e.target.name]: e.target.value });
+  // };
 
   return(
     <Card className={classes.card}>
@@ -149,7 +148,7 @@ if (isAuthenticated) {
 }
 
 const SignInForm = withFormik({
-  mapPropsToValues({ username, password, tos, meal }) {
+  mapPropsToValues({ username, password }) {
     return {
       username: username || "",
       password: password || "",
