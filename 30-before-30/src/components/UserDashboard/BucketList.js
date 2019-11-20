@@ -3,6 +3,7 @@ import axios from 'axios';
 import BucketItem from './BucketItem.js';
 
 const BucketList = (props) => {
+  console.log(props)
     const [list, setList] = useState([]);
 
     useEffect(() => {
