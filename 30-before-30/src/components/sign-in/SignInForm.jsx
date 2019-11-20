@@ -16,8 +16,10 @@ import { Redirect } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
   card: {
     width: '500px',
+    height: '325px',
     backgroundColor: '#5B7331',
     borderRadius: 0,
+    border: 'none',
     margin: '5vw',
   },
   cardContent: {
