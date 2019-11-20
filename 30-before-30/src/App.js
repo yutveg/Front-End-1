@@ -24,6 +24,7 @@ function App() {
         <Route path='/user' component={UserPage} />
         <Route path='/sign-in' component={SignInPage} />
         <Route path='/sign-up' component={SignUpPage} />
+        <Route path="/USERBUCKETLIST/:id" component={Modal} />
       </Switch>
       <Footer />
     </div>
