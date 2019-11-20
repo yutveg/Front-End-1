@@ -4,12 +4,11 @@ import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user.action'
 import './App.css';
-import SignUpPage from './components/sign-up/SignUpForm.js';
 import { HomePage } from './pages/HomePage';
 import { UserPage } from './pages/UserPage';
 import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
-// import { SignUpPage } from './pages/SignInPage';
+import { SignUpPage } from './pages/SignUpPage';
 import { Footer } from './components/Footer';
 
 function App() {
