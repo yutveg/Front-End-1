@@ -5,13 +5,11 @@ import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user.action'
 import './App.css';
 import { HomePage } from './pages/HomePage';
-import { UserPage } from './pages/UserPage';
 import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
 import UserDash from './components/UserDashboard/UserDash.js'
 import { SignUpPage } from './pages/SignUpPage';
 import { Footer } from './components/Footer';
-import ToDoList from './components/ToDoList'
 
 function App() {
   const [userData, setUserData] = useState([]);

@@ -3,6 +3,7 @@ import axios from 'axios';
 import BucketItem from './BucketItem.js';
 
 const BucketList = (props) => {
+  console.log(props)
     const [list, setList] = useState([]);
 
     useEffect(() => {
@@ -17,8 +18,8 @@ const BucketList = (props) => {
     return (
         <ul>
         {props.list.map(p => (
-          <li className="pokemon" key={p.name}>
-            {p.name}
+          <li className="pokemon" key={p}>
+            {p}
           </li>
         ))}
       </ul>
