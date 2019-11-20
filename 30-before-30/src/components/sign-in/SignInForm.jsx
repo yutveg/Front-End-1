@@ -9,6 +9,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 // Components
+import { FormInput } from '../form-input/FormInput';
+import { Redirect } from 'react-router-dom';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -75,7 +78,38 @@ const useStyles = makeStyles(theme => ({
 function LoginForm({ values, errors, touched }) {
   const classes = useStyles();
 
-  return (
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  });
+  const {isAuthenticated} = false;
+if (isAuthenticated) {
+  return <Redirect to='/HomePage' />;
+}
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    //setUser({ username: '', password: '' })
+    console.log(user)
+      axios
+        .post('https://project-30-before-30.herokuapp.com/api/auth/login', user)
+        .then(res => {
+          console.log(res);
+          setUser(res.data.results)
+          console.log(user)
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('userId', res.data.userId)
+          //props.history.push('/HomePage')
+        })
+        .catch(err => console.log("No data returned", err));
+    };
+
+
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  return(
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <p className={classes.title}>WELCOME BACK!</p>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const SignUpForm = ({touched, errors, status}) => {
     const [users, setUsers] = useState([]);
-
+    const history = useHistory();
     useEffect(() => {
         status && setUsers(users => [...users, status]);
-      }, [status]);
+    }, [status]);
 
     return (
         <div className="formwrapper">
@@ -63,12 +64,13 @@ const FormikSignUpForm = withFormik({
     handleSubmit(values) {
         console.log(values);
         axios
-        .post("https://bucketlist-30-before-30.herokuapp.com/api/auth/register", values)
+        .post("https://project-30-before-30.herokuapp.com/api/auth/register", values)
         .then(res => {
             const token = res
             console.log(token);
         })
         .catch(error => console.log(error));
+        //history.push('/home')
     }
 })(SignUpForm);
 
