@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
   img: {
     width: '500px',
     position: 'relative',
-    marginTop: '-325px',
   }
 }))
 
@@ -40,7 +39,7 @@ export function SignInPage() {
           <CardMedia className={classes.img}
             component="img"
             alt="Men running toward the ocean on a beach"
-            image="https://i.ibb.co/kX8S1vQ/Sign-In-Page.jpg"
+            image="https://images.unsplash.com/photo-1468183654773-77e2f0bb6bf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
           />
         </Card>   
       </div>
