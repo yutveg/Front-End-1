@@ -1,6 +1,6 @@
 import React from 'react';
 import { withFormik, Form, Field } from 'formik';
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 
 
@@ -36,8 +36,8 @@ const FormikAddItemForm = withFormik({
         console.log(props);
         const id = 2;
 
-        axios
-        .post(`https://project-30-before-30.herokuapp.com/api/bucketlists/${id}/items/`, values)
+        axiosWithAuth()
+        .post(`bucketlists/${id}/items/`, values)
         .then(res => {
             console.log(res);
         })
