@@ -39,7 +39,7 @@ const FormikAddItemForm = withFormik({
         axiosWithAuth()
         .post(`bucketlists/${id}/items/`, values)
         .then(res => {
-            console.log(res);
+            console.log(res.data);
         })
         .catch(err => console.log(err));
     }

@@ -6,7 +6,8 @@ const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://project-30-before-30.herokuapp.com/api/',
     headers: {
-      Authorization: token
+      Authorization: token,
+      // private:true
     }
   });
 };

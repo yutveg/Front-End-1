@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ItemsContext from '../../contexts/items/items.contexts'
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import BucketItem from './BucketItem'
 
 
-const BucketList = (props) => {
-  //const Item = Items[match.params.userId]
+const BucketList = () => {
   const [bucket, setBucket] = useState([])
   const id = 2
 
@@ -13,7 +13,6 @@ const BucketList = (props) => {
       axiosWithAuth()
     .get(`bucketlists/${id}/`)
     .then(res => {
-      console.log(res.data);
       setBucket(res.data)
     })
     .catch(err => console.log(err));
@@ -24,31 +23,18 @@ const BucketList = (props) => {
 
 
 
-  // axiosWithAuth()
-  //   .get(`bucketlists/${id}/`)
-  //   .then(res => {
-  //     console.log(res.data);
-  //     setBucket(res.data)
-  //   },[])
-  //   .catch(err => console.log(err));
   console.log(bucket)
-      
-  const ItemList = useContext(bucket)
-
-  console.log("Bucketlist", ItemList)
-    const [list, setList] = useState([]);
-
-
-    
-    return (
-        <ul>
-        {bucket.map(p => (
-          <li className="card" key={p.name}>
-            {p.description}
-          </li>
+  return (
+    <ItemsContext.Provider value={{bucket}}>
+      <ul>
+        {bucket.map(b => (
+        <li className="card" key={b.name}>
+          <BucketItem name={b.name} id={b.id}/>
+        </li>
         ))} 
       </ul>
-    )
+    </ItemsContext.Provider>
+  )
 }
 
 

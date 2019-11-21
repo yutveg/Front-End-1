@@ -1,5 +1,11 @@
 import { createContext } from 'react'
 
-const CurrentUsersContext = createContext(undefined)
+const CurrentUserContext = createContext(undefined)
+export const CurrentUserProvider = CurrentUserContext.Provider
+export const CurrentUserConsumer = CurrentUserContext.Consumer
 
-export default CurrentUsersContext
+export default CurrentUserContext
+
+
+
+
