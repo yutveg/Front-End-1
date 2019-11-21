@@ -12,6 +12,7 @@ users =[
     {
     id: 1,
     item: “Throw someone a surprise party.”,
+
     completed: false},
     {
     id: 2,

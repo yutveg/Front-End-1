@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
   focusVisible: {},
   imageButton: {
-    position: 'absolute',
+    // position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
@@ -65,7 +65,6 @@ const useStyles = makeStyles(theme => ({
   },
   imageTitle: {
     position: 'relative',
-    color: 'black',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
   },
   imageMarked: {
