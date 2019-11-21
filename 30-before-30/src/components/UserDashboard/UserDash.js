@@ -5,6 +5,8 @@ import uhm from '../../assets/uhm.jpg';
 import testphotoforapp from '../../assets/testphotoforapp.jpg';
 import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
+import CurrentUserContext from './contexts/current-user/current-user.context'
+
 
 const UserDash = (props) => {
     console.log(props)
@@ -44,8 +46,9 @@ const UserDash = (props) => {
                     <img className="prof-pic" src={uhm} alt="User Headshot" />
                     <h1>{user.displayname}</h1>
                 </div>
-                
-                <BucketList id={id} list={[1,2,3]}/>
+                <CurrentUserContext.Provider>
+                    <BucketList />
+                </CurrentUserContext.Provider>
             </div>
             <Route path={`/user/${id}/additem`} render={props => <AddItemForm id={id} /> } />
             <Link to={`/user/${id}/additem`} className="user-dash-button">ADD BUCKETLIST ITEM</Link>

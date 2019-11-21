@@ -5,6 +5,7 @@ import BucketItem from './BucketItem'
 
 
 const BucketList = () => {
+  const [CurrentUserContext, setCurrentUserContext] = useState(null)
   const [bucket, setBucket] = useState([])
   const id = 2
 
@@ -18,6 +19,9 @@ const BucketList = () => {
     .catch(err => console.log(err));
     }
     getBuckets();
+
+
+    setCurrentUserContext()
   }, []);
 
 
