@@ -7,17 +7,17 @@ const Modal = (props) => {
         displayname: '',
     });
 
-    const id = props.match.params.id;
+    // const id = props.match.params.id;
     
-    useEffect(() => {
-        axios 
-        .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
-        .then(res => {
-            console.log(res);
-            setUser(res.data);
-        })
-        .catch(err => console.log(err));
-    }, [])
+    // useEffect(() => {
+    //     axios 
+    //     .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
+    //     .then(res => {
+    //         console.log(res);
+    //         setUser(res.data);
+    //     })
+    //     .catch(err => console.log(err));
+    // }, [])
 
     return (
       <div className="modal">
