@@ -10,11 +10,11 @@ const BucketList = (props) => {
     
     return (
         <ul>
-        {props.list.map(p => (
-          <li className="pokemon" key={p}>
-            {p}
+        {/* {props.list.map(p => (
+          <li className="pokemon" key={p.name}>
+            {p.name}
           </li>
-        ))}
+        ))} */}
       </ul>
     )
 }
