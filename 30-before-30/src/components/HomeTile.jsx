@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function HomeTile() {
+export default function HomeTile() {
   const classes = useStyles();
 
   const [pubList, setPubList] = useState([]);
@@ -126,8 +126,8 @@ export function HomeTile() {
             </Typography>
           </span>
         </ButtonBase>
+        ))}
         <Modal />
-      ))}
     </div>
   );
 }
