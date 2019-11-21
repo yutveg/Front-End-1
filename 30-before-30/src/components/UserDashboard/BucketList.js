@@ -33,7 +33,7 @@ const BucketList = () => {
       <ul>
         {bucket.map(b => (
         <li className="card" key={b.name}>
-          <BucketItem name={b.name} id={b.id}/>
+          <BucketItem name={b.name} id={b.id} description={b.description}/>
         </li>
         ))} 
       </ul>
