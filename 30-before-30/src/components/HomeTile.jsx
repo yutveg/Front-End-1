@@ -97,7 +97,7 @@ export function HomeTile() {
 
   useEffect(() => {
     axios
-    .get('https://project-30-before-30.herokuapp.com/api/users')
+    .get('https://project-30-before-30.herokuapp.com/api/bucketlists/public/all')
     .then(res => {
       console.log('Huzzah! Public list data returned', res.data);
       setPubList(res.data);
@@ -127,11 +127,7 @@ export function HomeTile() {
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
-          <Link
-            to={{
-              pathname: "/test/:id",
-              state: { modal: true },
-            }}
+          <Link to ={`/home/${list.user_id}`}
             className="link"
           >
             <Typography
@@ -140,14 +136,14 @@ export function HomeTile() {
               color="inherit"
               className={classes.imageTitle}
             >
-              {list.user.displayname}
+              {list.user_id}
               <span className={classes.imageMarked} />
             </Typography>
             </Link>
           </span>
         </ButtonBase>
       ))}
-            <Route path="/:user_id" component={OpenModal} />
+            {/* <Route path="/:user_id" component={OpenModal} /> */}
     </div>
   );
 }
