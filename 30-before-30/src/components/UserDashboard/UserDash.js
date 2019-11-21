@@ -35,20 +35,20 @@ const UserDash = (props) => {
     }
 
     return (
-         <div to={`/user/${id}`} className="user-dash-wrapper">
-             <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
-             <button onClick={handleSubmit} className="public-button">PUBLIC</button>
-             <div className="user-dash-grid-container">
-                 <div>
-                     <img className="prof-pic" src={uhm} alt="User Headshot" />
-                     <h1>{user.displayname}</h1>
-                 </div>
-                 
-                 <BucketList id={id} />
-             </div>
-             <Route path={`/user/${id}/additem`} render={props => <AddItemForm id={id} /> } />
-             <Link to={`/user/${id}/additem`} className="user-dash-button">ADD BUCKETLIST ITEM</Link>
-         </div>
+        <div to={`/user/${id}`} className="user-dash-wrapper">
+            <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
+            <button onClick={handleSubmit} className="public-button">PUBLIC</button>
+            <div className="user-dash-grid-container">
+                <div>
+                    <img className="prof-pic" src={uhm} alt="User Headshot" />
+                    <h1>{user.displayname}</h1>
+                </div>
+                
+                <BucketList id={id} list={[1,2,3]}/>
+            </div>
+            <Route path={`/user/${id}/additem`} render={props => <AddItemForm id={id} /> } />
+            <Link to={`/user/${id}/additem`} className="user-dash-button">ADD BUCKETLIST ITEM</Link>
+        </div>
     )
 }
 
