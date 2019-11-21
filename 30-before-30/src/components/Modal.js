@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import uhm from '../assets/uhm.jpg'
+import uhm from '../assets/uhm.jpg';
+import BucketList from './UserDashboard/BucketList.js';
 
 const Modal = (props) => {
     const [user, setUser] = useState({
@@ -17,7 +18,7 @@ const Modal = (props) => {
             setUser(res.data);
         })
         .catch(err => console.log(err));
-    }, [])
+    }, [id])
 
     return (
       <div className="modal">
@@ -28,7 +29,7 @@ const Modal = (props) => {
             <h2>{user.displayname}</h2>
           </div>
 
-
+          <BucketList id={id} list={[1,2,3]}/>
         </div>
       </div>
     )

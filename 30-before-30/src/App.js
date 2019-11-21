@@ -19,10 +19,11 @@ function App(props) {
     <div className="App">
       <Nav /> 
 
-      <Link to='user/2'>USER DASH</Link>
+      <Link to='/user/2'>USER DASH</Link>
+      <Route path='/home' component={HomePage} />
       <Switch>
-        <Route exact path="/test/:id" render={props => <Modal {...props} /> } /> 
-        <Route exact path='/' component={HomePage} />
+        <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
+        
         <Route path='/user/:id' component={UserDash} />
         <Route exact path='/sign-in' render={()=>props.currentUser
         ?(<Redirect tp='/' />)
