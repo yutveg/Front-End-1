@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from './components/Modal';
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Link, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user.action'
 import './App.css';
@@ -19,6 +19,8 @@ function App(props) {
   return (
     <div className="App">
       <Nav /> 
+
+      <Link to='user/2'>USER DASH</Link>
       <Switch>
         <Route exact path="/test/:id" render={props => <Modal {...props} /> } /> 
         <Route exact path='/' component={HomePage} />

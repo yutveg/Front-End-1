@@ -33,14 +33,15 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export function SignInPage(props) {
+  console.log(props)
   const classes = useStyles();
 
-  useEffect(() => {
-    props.dispatch(fetchUser())
-  }, [])
+  // useEffect(() => {
+  //   props.dispatch(fetchUser())
+  // }, [])
 
   return (
-    <>
+    <div>
       <div className={classes.root}>
         <SignInForm className={classes.form} />
         <Card className={classes.card}>
@@ -51,16 +52,18 @@ export function SignInPage(props) {
           />
         </Card>   
       </div>
-    </>
+    </div>
   )
 }
 
 
+// const mapStateToProps = state => ({
+//   currentUser: state.user.currentUser
+// });
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
-});
+// const mapDispatchToProps = dispatch => ({
+//   setCurrentUser: user => dispatch(setCurrentUser(user))
+// })
+// export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
 
-const mapDispatchToProps = null;
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
+export default SignInPage

@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { UserActionTypes } from './user.types'
+import { UserActionTypes } from './user.reducer'
 
 export const FETCH_USER_LOADING = "FETCH_USER_LOADING";
 export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
