@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Route } from 'react-router-dom'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Modal from '../components/Modal';
+
+const OpenModal = ({ location }) => {
+  const { state = {} } = location;
+  const { modal } = state;
+  return (
+    <div className={modal ? "modal" : undefined}>
+      {modal && <Link to="/">Close</Link>}
+      <Modal />
+    </div>
+  );
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   focusVisible: {},
   imageButton: {
-    position: 'absolute',
+    // position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
@@ -59,8 +71,8 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: theme.palette.common.white,
-    opacity: 0.3,
+    backgroundColor: theme.palette.common.black,
+    opacity: 0.4,
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
@@ -78,14 +90,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function HomeTile() {
+export function HomeTile() {
   const classes = useStyles();
 
   const [pubList, setPubList] = useState([]);
 
   useEffect(() => {
     axios
-    .get('https://project-30-before-30.herokuapp.com/api/bucketlists/public/all')
+    .get('https://project-30-before-30.herokuapp.com/api/users')
     .then(res => {
       console.log('Huzzah! Public list data returned', res.data);
       setPubList(res.data);
@@ -98,36 +110,44 @@ export default function HomeTile() {
   return (
     <div className={classes.root}>
       {pubList.map(list => (
-        //key={list.user_id}
         <ButtonBase
           focusRipple
           key={list.user_id}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: list.width,
+          }}
         >
           <span
             className={classes.imageSrc}
-            style={{
-              backgroundImage: `url("https://ibb.co/6gRcVFQ")`,
-              //backgroundImage: `url(${image.url})`,
-            }}
+            // style={{
+            //   backgroundImage: `url(${list.url})`,
+            // }}
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
+          <Link
+            to={{
+              pathname: "/test/:id",
+              state: { modal: true },
+            }}
+            className="link"
+          >
             <Typography
               component="span"
               variant="subtitle1"
               color="inherit"
               className={classes.imageTitle}
             >
-              {list.public}
-              {/* {`${list.username}'s BucketList`} */}
+              {list.user.displayname}
               <span className={classes.imageMarked} />
             </Typography>
+            </Link>
           </span>
         </ButtonBase>
       ))}
-
+            <Route path="/:user_id" component={OpenModal} />
     </div>
   );
 }
