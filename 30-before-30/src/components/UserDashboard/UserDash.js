@@ -15,7 +15,7 @@ const UserDash = (props) => {
 
     useEffect(() => {
         axios
-        .get(`https://bucketlist-30-before-30.herokuapp.com/api/users/${id}`)
+        .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
         .then(res => {
             console.log(res.data);
             setUser(res.data);
@@ -25,7 +25,7 @@ const UserDash = (props) => {
 
     const handleSubmit = () => {
         axios
-        .put(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/${id}`, true)
+        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${id}`, true)
         .then(res => {
             console.log(res.data);
         })
