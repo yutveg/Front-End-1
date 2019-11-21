@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Modal from '../components/Modal';
+
+const OpenModal = ({ location }) => {
+  const { state = {} } = location;
+  const { modal } = state;
+  return (
+    <div className={modal ? "modal" : undefined}>
+      {modal && <Link to="/">Close</Link>}
+      <Modal />
+    </div>
+  );
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -86,7 +97,7 @@ export function HomeTile() {
 
   useEffect(() => {
     axios
-    .get('https://project-30-before-30.herokuapp.com/api/bucketlists/public/all')
+    .get('https://project-30-before-30.herokuapp.com/api/users')
     .then(res => {
       console.log('Huzzah! Public list data returned', res.data);
       setPubList(res.data);
@@ -116,19 +127,27 @@ export function HomeTile() {
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
+          <Link
+            to={{
+              pathname: "/test/:id",
+              state: { modal: true },
+            }}
+            className="link"
+          >
             <Typography
               component="span"
               variant="subtitle1"
               color="inherit"
               className={classes.imageTitle}
             >
-              {list.created_at}
+              {list.user.displayname}
               <span className={classes.imageMarked} />
             </Typography>
+            </Link>
           </span>
         </ButtonBase>
       ))}
-      <Route path="/:user_id" render={(props) => <Modal {...props} />} />
+            <Route path="/:user_id" component={OpenModal} />
     </div>
   );
 }
