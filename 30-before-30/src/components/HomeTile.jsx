@@ -127,7 +127,7 @@ export default function HomeTile() {
           </span>
         </ButtonBase>
         ))}
-        <Modal />
+       {/*} <Modal /> */}
     </div>
   );
 }
