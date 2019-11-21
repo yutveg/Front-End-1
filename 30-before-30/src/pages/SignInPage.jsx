@@ -3,8 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import SignInForm from '../components/sign-in/SignInForm';
-import { connect } from 'react-redux'
-import { fetchUser } from '../redux/user/user.action';
 
 
 
@@ -55,15 +53,4 @@ export function SignInPage(props) {
     </div>
   )
 }
-
-
-// const mapStateToProps = state => ({
-//   currentUser: state.user.currentUser
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   setCurrentUser: user => dispatch(setCurrentUser(user))
-// })
-// export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
-
 export default SignInPage

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import axios from 'axios';
-import { connect } from 'react-redux'
 
 
 
@@ -40,12 +39,6 @@ const FormikAddItemForm = withFormik({
 
 
 
-const mapStateToProps = state => ({
-    items: state.items,
-    userId: state.userId
-  });
   
-  const mapDispatchToProps = null;
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(FormikAddItemForm);
+  export default FormikAddItemForm;
   

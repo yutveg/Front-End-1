@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './components/Modal';
 import { Switch, Link, Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { setCurrentUser } from './redux/user/user.action'
+import CurrentUserContext from './contexts/current-user/current-user.context'
 import './App.css';
 import { HomePage } from './pages/HomePage';
 import Nav from './components/Nav';
@@ -35,14 +34,4 @@ function App(props) {
     </div>
   );
 }
-
-
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

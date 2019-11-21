@@ -3,7 +3,6 @@ import axios from 'axios';
 import BucketList from './BucketList.js';
 import uhm from '../../assets/uhm.jpg';
 import testphotoforapp from '../../assets/testphotoforapp.jpg';
-import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
 
@@ -54,10 +53,4 @@ const UserDash = (props) => {
     )
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
-});
-
-const mapDispatchToProps = null;
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserDash);
+export default UserDash
