@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import BucketItem from './BucketItem.js';
+import React, { useState, useContext, useEffect } from 'react';
+import ItemsContext from '../../contexts/items/items.contexts'
+
 
 const BucketList = (props) => {
-  console.log(props)
+  const ItemList = useContext(ItemsContext)
+  //const Item = Items[match.params.userId]
+  console.log("Bucketlist", ItemList)
     const [list, setList] = useState([]);
 
-    useEffect(() => {
-        axios 
-        .get(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/${props.id}`)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => console.log(err));
-    }, [])
+
     
     return (
         <ul>
-        {/* {props.list.map(p => (
-          <li className="pokemon" key={p.name}>
-            {p.name}
+        {ItemList.map(p => (
+          <li className="card" key={p.name}>
+            {p.description}
           </li>
-        ))} */}
+        ))} 
       </ul>
     )
 }
+
 
 export default BucketList;

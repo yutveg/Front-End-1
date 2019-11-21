@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import SignInForm from '../components/sign-in/SignInForm';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,11 +30,16 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export function SignInPage() {
+export function SignInPage(props) {
+  console.log(props)
   const classes = useStyles();
 
+  // useEffect(() => {
+  //   props.dispatch(fetchUser())
+  // }, [])
+
   return (
-    <>
+    <div>
       <div className={classes.root}>
         <SignInForm className={classes.form} />
         <Card className={classes.card}>
@@ -43,6 +50,7 @@ export function SignInPage() {
           />
         </Card>   
       </div>
-    </>
+    </div>
   )
 }
+export default SignInPage

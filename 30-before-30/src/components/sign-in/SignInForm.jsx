@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +9,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 // Components
-import { FormInput } from '../form-input/FormInput';
 import { Redirect } from 'react-router-dom';
 
 
@@ -85,32 +84,11 @@ function LoginForm({ values, errors, touched }) {
     password: ''
   });
   const {isAuthenticated} = false;
-if (isAuthenticated) {
-  return <Redirect to='/HomePage' />;
-}
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   //setUser({ username: '', password: '' })
-  //   console.log('user',user)
-  //     axios
-  //       .post('https://project-30-before-30.herokuapp.com/api/auth/login', user)
-  //       .then(res => {
-  //         console.log(user)
-  //         console.log(res);
-  //         setUser(res.data.results)
-  //         console.log(user)
-  //         localStorage.setItem('token', res.data.token)
-  //         localStorage.setItem('userId', res.data.userId)
-  //         //history.push('/HomePage')
-  //       })
-  //       .catch(err => console.log("No data returned", err));
-  //   };
 
 
-  const handleChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  // const handleChange = e => {
+  //   setUser({ ...user, [e.target.name]: e.target.value });
+  // };
 
   return(
     <Card className={classes.card}>
@@ -149,7 +127,7 @@ if (isAuthenticated) {
 }
 
 const SignInForm = withFormik({
-  mapPropsToValues({ username, password, tos, meal }) {
+  mapPropsToValues({ username, password }) {
     return {
       username: username || "",
       password: password || "",

@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import axios from 'axios';
 
 
+
 function AddItemForm(props) {
     
 
@@ -25,6 +26,8 @@ const FormikAddItemForm = withFormik({
     },
     handleSubmit(values, props) {
         console.log(values);
+        console.log(props);
+
         axios
         .post(`https://bucketlist-30-before-30.herokuapp.com/api/bucketlists/${props.id}/items/`, values)
         .then(res => {
@@ -34,4 +37,8 @@ const FormikAddItemForm = withFormik({
     }
 })(AddItemForm);
 
-export default FormikAddItemForm;
+
+
+  
+  export default FormikAddItemForm;
+  

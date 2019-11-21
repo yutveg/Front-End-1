@@ -7,6 +7,7 @@ import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
 
 const UserDash = (props) => {
+    console.log(props)
     const [user, setUser] = useState({
         displayname: '',
     });
@@ -52,4 +53,4 @@ const UserDash = (props) => {
     )
 }
 
-export default UserDash;
+export default UserDash
