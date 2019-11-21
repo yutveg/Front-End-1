@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux'
+import React, { useState, useContext, useEffect } from 'react';
+import ItemsContext from '../../contexts/items/items.contexts'
 
 
 const BucketList = (props) => {
-  console.log("Bucketlist",props)
+  const ItemList = useContext(ItemsContext)
+  //const Item = Items[match.params.userId]
+  console.log("Bucketlist", ItemList)
     const [list, setList] = useState([]);
 
 
     
     return (
         <ul>
-        {/* {props.list.map(p => (
-          <li className="pokemon" key={p.name}>
-            {p.name}
+        {ItemList.map(p => (
+          <li className="card" key={p.name}>
+            {p.description}
           </li>
-        ))} */}
+        ))} 
       </ul>
     )
 }
 
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
-});
-
-const mapDispatchToProps = null;
-
-export default connect(mapStateToProps, mapDispatchToProps)(BucketList);
+export default BucketList;

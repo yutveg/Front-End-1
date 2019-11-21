@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './components/Modal';
-import { Switch, Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { setCurrentUser } from './redux/user/user.action'
+import { Switch, Link, Route, Redirect } from 'react-router-dom'
+import CurrentUserContext from './contexts/current-user/current-user.context'
 import './App.css';
 import { HomePage } from './pages/HomePage';
 import Nav from './components/Nav';
@@ -19,6 +18,8 @@ function App(props) {
   return (
     <div className="App">
       <Nav /> 
+
+      <Link to='user/2'>USER DASH</Link>
       <Switch>
         <Route exact path="/test/:id" render={props => <Modal {...props} /> } /> 
         <Route exact path='/' component={HomePage} />
@@ -33,14 +34,4 @@ function App(props) {
     </div>
   );
 }
-
-
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

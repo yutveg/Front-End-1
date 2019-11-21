@@ -126,8 +126,8 @@ export default function HomeTile() {
             </Typography>
           </span>
         </ButtonBase>
-        ))}
-       {/*} <Modal /> */}
+      ))}
+
     </div>
   );
 }
