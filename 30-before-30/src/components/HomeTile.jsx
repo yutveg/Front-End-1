@@ -59,12 +59,13 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: theme.palette.common.white,
-    opacity: 0.3,
+    backgroundColor: theme.palette.common.black,
+    opacity: 0.4,
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
     position: 'relative',
+    color: 'black',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
   },
   imageMarked: {
@@ -98,19 +99,20 @@ export function HomeTile() {
   return (
     <div className={classes.root}>
       {pubList.map(list => (
-        //key={list.user_id}
         <ButtonBase
           focusRipple
           key={list.user_id}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: list.width,
+          }}
         >
           <span
             className={classes.imageSrc}
-            style={{
-              backgroundImage: `url("https://ibb.co/6gRcVFQ")`,
-              //backgroundImage: `url(${image.url})`,
-            }}
+            // style={{
+            //   backgroundImage: `url(${list.url})`,
+            // }}
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
@@ -120,13 +122,11 @@ export function HomeTile() {
               color="inherit"
               className={classes.imageTitle}
             >
-              {list.public}
-              {/* {`${list.username}'s BucketList`} */}
+              {list.created_at}
               <span className={classes.imageMarked} />
             </Typography>
           </span>
         </ButtonBase>
-        <Modal />
       ))}
     </div>
   );
