@@ -29,6 +29,7 @@ const UserDash = (props) => {
         .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${id}`, true)
         .then(res => {
             console.log(res.data);
+            
         })
         .catch(err => {
             console.log(err);
@@ -38,7 +39,7 @@ const UserDash = (props) => {
     return (
         <div to={`/user/${id}`} className="user-dash-wrapper">
             <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
-            <button onClick={handleSubmit} className="public-button">PUBLIC</button>
+            <button onClick={handleSubmit} className="public-button">MAKE PUBLIC</button>
             <div className="user-dash-grid-container">
                 <div>
                     <img className="prof-pic" src={uhm} alt="User Headshot" />
