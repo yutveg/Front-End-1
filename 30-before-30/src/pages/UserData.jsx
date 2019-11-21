@@ -1,6 +1,6 @@
 users =[
   {
-  id: 1
+  id: 1,
   username: “Lara”,
   password: “qwerty”,
   location: “Seattle, WA”,
