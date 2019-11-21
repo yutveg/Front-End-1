@@ -34,8 +34,8 @@ const SignUpForm = ({touched, errors, status}) => {
             </div>
 
             <div>
-                <label htmlFor="displayname">displayname</label>
-                <Field type="text" name="displayname" placeholder="displayname" />
+                <label htmlFor="displayname">DISPLAY NAME:</label>
+                <Field type="text" name="displayname" placeholder="Display name.." />
                 {touched.displayname && errors.displayname && <span className="errors">{errors.displayname}</span>}
             </div> 
 

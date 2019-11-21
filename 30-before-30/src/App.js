@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Modal from './components/Modal';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user.action'
 import './App.css';
 import { HomePage } from './pages/HomePage';
-import { UserPage } from './pages/UserPage';
 import Nav from './components/Nav';
 import { SignInPage } from './pages/SignInPage';
 import UserDash from './components/UserDashboard/UserDash.js'
 import { SignUpPage } from './pages/SignUpPage';
 import { Footer } from './components/Footer';
 
-function App() {
+function App(props) {
+  console.log(props)
   const [userData, setUserData] = useState([]);
   
 
@@ -23,7 +23,9 @@ function App() {
         <Route exact path="/test/:id" render={props => <Modal {...props} /> } /> 
         <Route exact path='/' component={HomePage} />
         <Route path='/user/:id' component={UserDash} />
-        <Route path='/sign-in' component={SignInPage} />
+        <Route exact path='/sign-in' render={()=>props.currentUser
+        ?(<Redirect tp='/' />)
+        :<SignInPage />} />
         <Route path='/sign-up' component={SignUpPage} />
         <Route path="/USERBUCKETLIST/:id" component={Modal} />
       </Switch>
@@ -33,13 +35,12 @@ function App() {
 }
 
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
-// //for children
-// const mapStateToProps = state => {
-//   currentUser = state.user.currentUser
 
-// }
-// export default connect(mapStateToProps)(App);
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

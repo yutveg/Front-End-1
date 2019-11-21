@@ -1,11 +1,11 @@
 /* SIGN UP FORM STYLINGS V V V V V V*/
 
 .formwrapper {
-  width: 350px;
-  margin: 110px 0 40px 30%;
+  width: 500px;
+  margin: 50px 0 40px 0;
   background-color: #5B7931;
-  border-radius: 5px;
-  padding: 2%;
+  border-radius: 1px;
+  padding: 1.5% 2.3%;
   color: #FFE6CD;
 }
 .formwrapper h1 {
@@ -14,12 +14,12 @@
 
 .signupform input {
     width: 100%;
-    margin-bottom: 4%;
-    padding: 1% 0;
+    margin-bottom: 2%;
+    padding: 2% 0;
 }
 
 .signupform button {
-  margin: 5% 0 0 61.5%;
+  margin: 1% 0 0 61.5%;
   width: 40%;
   padding: 2%;
   background-color: #FFE6CD;
@@ -64,8 +64,6 @@
   height: 850px;
   font-family: Helvetica Neue;
 }
-
-
 
 .user-dash-img {
     width: 100%;
