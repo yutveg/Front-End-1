@@ -35,12 +35,12 @@ function Nav() {
 
   return (
     <div className={classes.root}>
-      <Link className={classes.link} to="/">
+      <Link className={classes.link} to="/home">
         <Logo className={classes.logo} />
       </Link>
 
       <div className={classes.linksContainer}>
-        <Link className={classes.link} to="/">
+        <Link className={classes.link} to="/home">
           HOME
         </Link>
         <Link className={classes.link} to="/about">

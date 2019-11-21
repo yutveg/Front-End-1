@@ -1,16 +1,19 @@
 import React from 'react';
-import { Switch, Route, useLocation } from "react-router-dom";
-
 import { makeStyles } from '@material-ui/core/styles';
-import HomeTile from '../components/HomeTile';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import { HomeTile } from '../components/HomeTile';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // justifyContent: 'space-around',
+    // overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+
   }
 }));
 
@@ -20,7 +23,11 @@ export function HomePage() {
   return (
     <div className={classes.root}>
       Welcome to the Home Page
-      <HomeTile />
+      <GridList cellHeight={180} className={classes.gridList}>
+        {/* <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}> */}
+          <HomeTile />
+        {/* </GridListTile> */}
+      </GridList>
     </div>
   );
 }
