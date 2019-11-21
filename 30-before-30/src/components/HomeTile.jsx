@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -127,7 +128,7 @@ export function HomeTile() {
           </span>
         </ButtonBase>
       ))}
-
+      <Route path="/:user_id" render={(props) => <Modal {...props} />} />
     </div>
   );
 }
