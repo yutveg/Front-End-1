@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function HomeTile() {
+export function HomeTile() {
   const classes = useStyles();
 
   const [pubList, setPubList] = useState([]);
