@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   linksContainer: {
-    width: '30vw',
+    width: '35vw',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -51,6 +51,9 @@ function Nav() {
         </Link>
         <Link className={classes.link} to="/sign-up">
           SIGN UP
+        </Link>
+        <Link className={classes.link} to='/user/:id'>
+          MY LIST
         </Link>
       </div>
     </div>

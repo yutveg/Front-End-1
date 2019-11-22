@@ -23,19 +23,19 @@ function App(props) {
 
   return (
     <div className="App">  
-          <Nav /> 
-          <Link to={`/users/${decoded.id}`}>USER DASH</Link>
-          <Route path='/home' component={HomePage} />
-          <Switch>
-            <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
-            <Route path={`/users/${decoded.id}`} component={UserDash} />
-            <Route exact path='/sign-in' render={()=>props.currentUser
-              ?(<Redirect tp='/' />)
-              :<SignInPage />} />
-            <Route path='/sign-up' component={SignUpPage} />
-            <Route path="/USERBUCKETLIST/:id" component={Modal} />
-          </Switch>
-          {/*<Footer /> */}
+      <Nav /> 
+      <Link to={`/users/${decoded.id}`}>USER DASH</Link>
+      <Route path='/home' component={HomePage} />
+      <Switch>
+        <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
+        <Route path={`/users/${decoded.id}`} component={UserDash} />
+        <Route exact path='/sign-in' render={()=>props.currentUser
+          ?(<Redirect tp='/' />)
+          :<SignInPage />} />
+        <Route path='/sign-up' component={SignUpPage} />
+        <Route path="/USERBUCKETLIST/:id" component={Modal} />
+      </Switch>
+      {/*<Footer /> */}
     </div>
   );
 }
