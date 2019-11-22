@@ -9,6 +9,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
   },
+  gridList: {
+    display: 'flex',
+    flexWrap:'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // width: '90vw',
+    // margin:'10vw'
+  },
   tileTitle: {
     textAlign: 'center',
     letterSpacing: '2px',

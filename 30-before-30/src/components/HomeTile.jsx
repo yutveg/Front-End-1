@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     position: 'relative',
     height: 400,
-    width: '30vw',
+    width: '25vw',
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
