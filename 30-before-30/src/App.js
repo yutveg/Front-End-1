@@ -19,7 +19,6 @@ function App(props) {
     <div className="App">
       <Nav /> 
 
-      <Link to='/user/2'>USER DASH</Link>
       <Route path='/home' component={HomePage} />
       <Switch>
         <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
