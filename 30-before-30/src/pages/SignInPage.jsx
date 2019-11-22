@@ -34,9 +34,7 @@ export function SignInPage(props) {
   console.log(props)
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   props.dispatch(fetchUser())
-  // }, [])
+
 
   return (
     <div>

@@ -16,38 +16,41 @@ import decode from 'jwt-decode'
 
 
 function App(props) {
+  console.log('App')
   const context = useContext(Context) 
   const [bucket, setBucket] = useState([context.ITEM_DATA])
+  const [user, setUser] = useState({
+    userId:6,
+    token: '',
+    username:''
+  })
 
-  useEffect(() => {
-    axios
-      .post('https://project-30-before-30.herokuapp.com/api/auth/login', {username: "blue", password: "blue"})
-      .then(res => {
-        //console.log(values)
-        const token = res.data.token
-        console.log(token);
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
-        localStorage.setItem('token', res.data.token)
-        // localStorage.setItem('username', username)
-        localStorage.setItem('userId', decode(token).id)
-      })
-      .catch(err => {console.log(err)});
-  }, [])
+  // let decoded;
   
-  const token  = localStorage.getItem('token')
-  const decoded = decode(token)
+  // useEffect(() => {
+  //   axios
+  //     .post('https://project-30-before-30.herokuapp.com/api/auth/login', {username: "blue", password: "blue"})
+  //     .then(res => {
+  //       console.log(res.data)
+  //       localStorage.setItem('token', res.data.token)
+  //       // localStorage.setItem('username', username)
+  //       //localStorage.setItem('userId', decode(token).id)
+  //     })
+  //     //.then(decoded = decode(localStorage.getItem('token')))
+  //     .catch(err => {console.log(err)});
+  //     //console.log(decoded)
+  // },[])
 
 
   return (
-    <Provider value={{bucket}}>
+    <Provider value={{bucket, user}}>
       <div className="App">
         <Nav /> 
-        <Link to={`/users/${decoded.id}`}>USER DASH</Link>
+        <Link to={`/users/${user.userId}`}>USER DASH</Link>
         <Route path='/home' component={HomePage} />
         <Switch>
-          <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
-          <Route path={`/users/${decoded.id}`} component={UserDash} />
+          {/*<Route path="/home/:id" render={props => <Modal {...props} /> } /> */}
+          <Route path={`/users/${user.userId}`} component={UserDash} />
           <Route exact path='/sign-in' render={()=>props.currentUser
             ?(<Redirect tp='/' />)
             :<SignInPage />} />

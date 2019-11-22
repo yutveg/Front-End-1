@@ -9,6 +9,8 @@ import {Provider} from '../../contexts/context'
 import decode from 'jwt-decode'
 
 const UserDash = () => {
+    console.log('userdash')
+
     const [user, setUser] = useState({
         displayname: '',
     });

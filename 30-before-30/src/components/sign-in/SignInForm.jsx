@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import Context, {Provder, Consumer} from '../../contexts/context'
+
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -79,6 +81,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginForm({ values, errors, touched }) {
+  const {user} = useContext(Context);
+  console.log(user)
   const classes = useStyles();
 
   // const [user, setUser] = useState({
@@ -93,6 +97,7 @@ function LoginForm({ values, errors, touched }) {
   // };
 
   return(
+    
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <p className={classes.title}>WELCOME BACK!</p>
@@ -150,8 +155,6 @@ const SignInForm = withFormik({
         console.log(values)
         const token = res.data.token
         console.log(token);
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('username', values.username)
         localStorage.setItem('userId', decode(token).id)
