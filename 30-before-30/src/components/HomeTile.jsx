@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import Modal from '../components/Modal';
+//import Modal from '../components/Modal';
 
-const OpenModal = ({ location }) => {
-  const { state = {} } = location;
-  const { modal } = state;
-  return (
-    <div className={modal ? "modal" : undefined}>
-      {modal && <Link to="/">Close</Link>}
-      <Modal />
-    </div>
-  );
-};
+// const OpenModal = ({ location }) => {
+//   const { state = {} } = location;
+//   const { modal } = state;
+//   return (
+//     <div className={modal ? "modal" : undefined}>
+//       {modal && <Link to="/">Close</Link>}
+//       <Modal />
+//     </div>
+//   );
+// };
 
 const useStyles = makeStyles(theme => ({
   root: {

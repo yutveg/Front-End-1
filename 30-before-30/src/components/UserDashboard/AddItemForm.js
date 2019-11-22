@@ -1,7 +1,7 @@
 import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-
+import decode from 'jwt-decode'
 
 
 function AddItemForm(props) {
@@ -16,11 +16,13 @@ function AddItemForm(props) {
 
             <div>
                 <button type="submit" className="add-item-button">Update List</button>
-            </div>
-        </Form>
+                </div>
+                </Form>
     )
 }
 
+const token  = localStorage.getItem('token')
+const decoded = decode(token)
 const FormikAddItemForm = withFormik({
     mapPropsToValues({name, description, link}) {
         return {
@@ -32,14 +34,13 @@ const FormikAddItemForm = withFormik({
         }
     },
     handleSubmit(values, props) {
-        console.log(values);
-        console.log(props);
-        const id = 2;
-
+        // console.log(values);
+        // console.log(props);
+        console.log(decoded.id)
         axiosWithAuth()
-        .post(`bucketlists/${id}/items/`, values)
+        .post(`bucketlists/6/items`, values)
         .then(res => {
-            console.log(res);
+            console.log(res.data);
         })
         .catch(err => console.log(err));
     }
@@ -47,6 +48,6 @@ const FormikAddItemForm = withFormik({
 
 
 
-  
-  export default FormikAddItemForm;
-  
+    
+    export default FormikAddItemForm;
+    

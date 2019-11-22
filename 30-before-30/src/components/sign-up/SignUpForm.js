@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React /*,{ useState, useEffect }*/ from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
 import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+//import * as Yup from 'yup';
 
 const SignUpForm = ({touched, errors, status}) => {
-    const [users, setUsers] = useState([]);
-    const history = useHistory();
-    useEffect(() => {
-        status && setUsers(users => [...users, status]);
-    }, [status]);
+    // const [users, setUsers] = useState([]);
+    //const history = useHistory();
+    // useEffect(() => {
+    //     status && setUsers(users => [...users, status]);
+    // }, [status]);
 
     return (
         <div className="formwrapper">
