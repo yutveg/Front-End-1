@@ -52,6 +52,9 @@ function Nav() {
         <Link className={classes.link} to="/sign-up">
           SIGN UP
         </Link>
+        <Link className={classes.link} to='/user/:id'>
+          MY LIST
+        </Link>
       </div>
     </div>
 );
