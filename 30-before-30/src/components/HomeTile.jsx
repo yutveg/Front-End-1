@@ -20,17 +20,16 @@ const OpenModal = ({ location }) => {
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
     minWidth: 300,
     width: '100%',
+    margin: '5vw',
   },
   image: {
     position: 'relative',
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
-    },
+    height: 400,
+    width: 300,
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -46,7 +45,6 @@ const useStyles = makeStyles(theme => ({
   },
   focusVisible: {},
   imageButton: {
-    // position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
@@ -76,6 +74,11 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
+    textDecoration: 'none',
+    letterSpacing: '2px',
+    color: 'white',
+    fontWeight: '700',
+    fontSize: '2em',    
     position: 'relative',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
   },
@@ -121,9 +124,9 @@ export function HomeTile() {
         >
           <span
             className={classes.imageSrc}
-            // style={{
-            //   backgroundImage: `url(${list.url})`,
-            // }}
+            style={{
+              backgroundImage: `url(${list.url})`,
+            }}
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>

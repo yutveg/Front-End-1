@@ -26,7 +26,7 @@ export function HomePage() {
       <h2 className={classes.tileTitle}>
         CHECK OUT SOME COOL LISTS
       </h2>
-      <GridList cellHeight={180} className={classes.gridList}>
+      <GridList className={classes.gridList}>
         <HomeTile />
       </GridList>
     </div>
