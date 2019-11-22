@@ -93,10 +93,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function HomeTile() {
+export function HomeTile(props) {
   const classes = useStyles();
 
   const [pubList, setPubList] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     axios
@@ -108,11 +109,14 @@ export function HomeTile() {
     .catch(err => {
       console.log('Public list data not returned', err)
     })
-  },[]);
+  },[pubList]);
 
   return (
     <div className={classes.root}>
       {pubList.map(list => (
+        <Link to ={`/home/${list.user_id}`}
+        className="link"
+        >
         <ButtonBase
           focusRipple
           key={list.user_id}
@@ -125,14 +129,11 @@ export function HomeTile() {
           <span
             className={classes.imageSrc}
             style={{
-              backgroundImage: 'url("${list.url"})',
+              backgroundImage: 'url("https://source.unsplash.com/collection/8934471/1600x900")',
             }}
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
-          <Link to ={`/home/${list.user_id}`}
-            className="link"
-          >
             <Typography
               component="span"
               variant="subtitle1"
@@ -142,9 +143,9 @@ export function HomeTile() {
               {list.user_id}
               <span className={classes.imageMarked} />
             </Typography>
-            </Link>
           </span>
         </ButtonBase>
+        </Link>
       ))}
             {/* <Route path="/:user_id" component={OpenModal} /> */}
     </div>
