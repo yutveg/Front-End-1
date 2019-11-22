@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import ItemsContext from '../../contexts/context'
+import Context, {Provider} from '../../contexts/context'
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import BucketItem from './BucketItem'
 import decode from 'jwt-decode'
@@ -7,24 +7,21 @@ import decode from 'jwt-decode'
 
 
 const BucketList = () => {
-  //const [CurrentUserContext, setCurrentUserContext] = useState(null)
-  const [bucket, setBucket] = useState([])
-  const token  = localStorage.getItem('token')
-  const decoded = decode(token)
-  console.log(decoded)
-  const ItemLists = useContext(ItemsContext);
-  const ItemList = ItemLists[matchMedia.params.BucketListId]
-  // const { }
-  console.log(ItemsContext)
+  const context = useContext(Context) 
+  const [bucket, setBucket] = useState([context.ITEM_DATA])
+  const decoded = decode(context.token)
+  console.log(bucket)
+  console.log(context)
+
   useEffect(() => {
     const getBuckets = () => {
       axiosWithAuth()
-    .get(`bucketlists/${decoded.id}/`,)
-    .then(res => {
-      console.log(res)
-      setBucket(res.data)
-    })
-    .catch(err => console.log(err.response));
+      .get(`bucketlists/${decoded.id}/`,)
+      .then(res => {
+        console.log(res)
+        setBucket(res.data)
+      })
+      .catch(err => console.log(err.response));
     }
     getBuckets();
 
@@ -35,17 +32,17 @@ const BucketList = () => {
 
 
 
-  console.log(bucket.length ?bucket: null)
+  console.log(bucket)
   return (
-    <ItemsContext.Provider value={{bucket}}>
+    <Provider value={{bucket}}>
       <ul>
         {bucket.map(b => (
         <li className="card" key={b.name}>
-          <BucketItem name={b.name} id={b.id} description={b.description}/>
+          <BucketItem />
         </li>
         ))} 
       </ul>
-    </ItemsContext.Provider>
+    </Provider>
   )
 }
 

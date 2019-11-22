@@ -5,14 +5,14 @@ import uhm from '../../assets/uhm.jpg';
 import testphotoforapp from '../../assets/testphotoforapp.jpg';
 //import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
-import {CurrentUserContext} from '../../contexts/context'
+import {Provider} from '../../contexts/context'
 import decode from 'jwt-decode'
 
-const UserDash = (props) => {
-    //console.log(props)
+const UserDash = () => {
     const [user, setUser] = useState({
         displayname: '',
     });
+    const ITEM_DATA = []
 
     const token  = localStorage.getItem('token')
     const decoded = decode(token)
@@ -47,9 +47,9 @@ const UserDash = (props) => {
                     <img className="prof-pic" src={uhm} alt="User Headshot" />
                     <h1>{user.displayname}</h1>
                 </div>
-                <CurrentUserContext.Provider>
+                <Provider value={{ token, ITEM_DATA}}>
                     <BucketList />
-                </CurrentUserContext.Provider>
+                </Provider>
             </div>
             <AddItemForm />
         </div>

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth'
+import Context, {Consumer} from '../../contexts/context'
+
 import decode from 'jwt-decode'
-const BucketItem = (props) => {
+const BucketItem = () => {
+    const context = useContext(Context) 
+
     const idd = props.id
     const token  = localStorage.getItem('token')
     const decoded = decode(token)
@@ -15,28 +19,18 @@ const BucketItem = (props) => {
         })
         .catch(err => console.log(err.message));
     }
-    //const updateItem
-
-    // const deleteFavorite = e => {
-    //     e.preventDefault();
-    //     // console.log({'"comment"':`${id}`})
-    //     axiosWithAuth()
-    //     // axios
-    //     .delete(`https://salty-hackers.herokuapp.com/api/comments/${id}/deletefav`)
-    //     .then(res => {
-    //         console.log("Saved Res: ", res)
-    //         window.location.reload(false)
-    //     })
-    //     .catch(err => console.log(err))
-    // }
 
     return (
-        <div>
-            <h2>{props.name}</h2>
-            <p>{props.description}</p>
-            <button onClick={deleteItem}>Complete</button> 
-            {/*<button onClick={updateItem}>Update</button> */}
-        </div>
+        <Consumer>{BucketItem => {
+            const {name, description} = BucketItem
+            return(
+            <div>
+                <h2>{name}</h2>
+                <p>{description}</p>
+                <button onClick={deleteItem}>Complete</button> 
+                {/*<button onClick={updateItem}>Update</button> */}
+            </div>
+        )}}</Consumer>
     )
 }
 
