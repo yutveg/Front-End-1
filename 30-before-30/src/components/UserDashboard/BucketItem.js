@@ -7,9 +7,13 @@ const BucketItem = props => {
     const context = useContext(Context) 
 
     const idd = props.id
-    const token  = localStorage.getItem('token')
-    const decoded = decode(token)
-    //console.log(decoded)
+    let decoded = 0
+    if(localStorage.getItem('token')) {
+        const token  = localStorage.getItem('token')
+        decoded = decode(token)
+        return decoded
+    }
+    console.log(decoded)
 
     const deleteItem = () => {
         axiosWithAuth()

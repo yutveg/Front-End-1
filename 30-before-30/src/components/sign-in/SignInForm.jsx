@@ -144,25 +144,25 @@ const SignInForm = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setSubmitting }) {
-      axios
-        .post('https://project-30-before-30.herokuapp.com/api/auth/login', values)
-        .then(res => {
-          console.log(values)
-          const token = res.data.token
-          console.log(token);
-          localStorage.removeItem('token')
-          localStorage.removeItem('username')
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('username', values.username)
-          localStorage.setItem('userId', decode(token).id)
-          
-          resetForm();
-          setSubmitting(false);
-        })
-        .catch(err => {
-          console.log(err);
-          setSubmitting(false);
-        });
+    axios
+      .post('https://project-30-before-30.herokuapp.com/api/auth/login', values)
+      .then(res => {
+        console.log(values)
+        const token = res.data.token
+        console.log(token);
+        localStorage.removeItem('token')
+        localStorage.removeItem('username')
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('username', values.username)
+        localStorage.setItem('userId', decode(token).id)
+        
+        resetForm();
+        setSubmitting(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setSubmitting(false);
+      });
     }
   })(LoginForm);
 
