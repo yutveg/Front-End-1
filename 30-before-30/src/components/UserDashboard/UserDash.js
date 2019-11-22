@@ -5,7 +5,7 @@ import uhm from '../../assets/uhm.jpg';
 import testphotoforapp from '../../assets/testphotoforapp.jpg';
 //import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
-import CurrentUserContext from '../../contexts/current-user/current-user.context'
+import {CurrentUserContext} from '../../contexts/context'
 import decode from 'jwt-decode'
 
 const UserDash = (props) => {
