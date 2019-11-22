@@ -20,17 +20,16 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
     minWidth: 300,
     width: '100%',
+    margin: '5vw',
   },
   image: {
     position: 'relative',
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
-    },
+    height: 400,
+    width: '30vw',
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -46,7 +45,6 @@ const useStyles = makeStyles(theme => ({
   },
   focusVisible: {},
   imageButton: {
-    // position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
@@ -76,6 +74,11 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('opacity'),
   },
   imageTitle: {
+    textDecoration: 'none',
+    letterSpacing: '2px',
+    color: 'white',
+    fontWeight: '700',
+    fontSize: '2em',    
     position: 'relative',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
   },
@@ -90,10 +93,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function HomeTile() {
+export function HomeTile(props) {
   const classes = useStyles();
 
   const [pubList, setPubList] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     axios
@@ -105,11 +109,14 @@ export function HomeTile() {
     .catch(err => {
       console.log('Public list data not returned', err)
     })
-  },[]);
+  },[pubList]);
 
   return (
     <div className={classes.root}>
       {pubList.map(list => (
+        <Link to ={`/home/${list.user_id}`}
+        className="link"
+        >
         <ButtonBase
           focusRipple
           key={list.user_id}
@@ -121,15 +128,12 @@ export function HomeTile() {
         >
           <span
             className={classes.imageSrc}
-            // style={{
-            //   backgroundImage: `url(${list.url})`,
-            // }}
+            style={{
+              backgroundImage: 'url("https://source.unsplash.com/collection/8934471/1600x900")',
+            }}
           />
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
-          <Link to ={`/home/${list.user_id}`}
-            className="link"
-          >
             <Typography
               component="span"
               variant="subtitle1"
@@ -139,9 +143,9 @@ export function HomeTile() {
               {list.user_id}
               <span className={classes.imageMarked} />
             </Typography>
-            </Link>
           </span>
         </ButtonBase>
+        </Link>
       ))}
             {/* <Route path="/:user_id" component={OpenModal} /> */}
     </div>

@@ -24,6 +24,7 @@ function App(props) {
       <Nav /> 
 
       <Link to={`/users/${decoded.id}`}>USER DASH</Link>
+
       <Route path='/home' component={HomePage} />
       <Switch>
         <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
