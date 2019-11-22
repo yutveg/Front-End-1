@@ -3,7 +3,7 @@ import axiosWithAuth from '../../utils/axiosWithAuth'
 import Context, {Consumer} from '../../contexts/context'
 
 import decode from 'jwt-decode'
-const BucketItem = () => {
+const BucketItem = props => {
     const context = useContext(Context) 
 
     const idd = props.id
@@ -21,16 +21,18 @@ const BucketItem = () => {
     }
 
     return (
-        <Consumer>{BucketItem => {
-            const {name, description} = BucketItem
-            return(
-            <div>
-                <h2>{name}</h2>
-                <p>{description}</p>
-                <button onClick={deleteItem}>Complete</button> 
-                {/*<button onClick={updateItem}>Update</button> */}
-            </div>
-        )}}</Consumer>
+        <Consumer>
+            {BucketItem => {
+                const {name, description} = BucketItem
+                return(
+                <div>
+                    <h2>{name}</h2>
+                    <p>{description}</p>
+                    <button onClick={deleteItem}>Complete</button> 
+                    {/*<button onClick={updateItem}>Update</button> */}
+                </div>
+            )}}
+        </Consumer>
     )
 }
 
