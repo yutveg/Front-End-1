@@ -5,6 +5,7 @@ import decode from 'jwt-decode'
 
 
 function AddItemForm(props) {
+    console.log('additemForm')
 
     return (
         <Form className="add-item-form">
@@ -22,7 +23,7 @@ function AddItemForm(props) {
 }
 
 const token  = localStorage.getItem('token')
-const decoded = decode(token)
+//const decoded = decode(token)
 const FormikAddItemForm = withFormik({
     mapPropsToValues({name, description, link}) {
         return {
@@ -36,7 +37,7 @@ const FormikAddItemForm = withFormik({
     handleSubmit(values, props) {
         // console.log(values);
         // console.log(props);
-        console.log(decoded.id)
+        //console.log(decoded.id)
         axiosWithAuth()
         .post(`bucketlists/6/items`, values)
         .then(res => {

@@ -109,7 +109,7 @@ export function HomeTile(props) {
     .catch(err => {
       console.log('Public list data not returned', err)
     })
-  },[pubList]);
+  },[pubList.length]);
 
   return (
     <div className={classes.root}>

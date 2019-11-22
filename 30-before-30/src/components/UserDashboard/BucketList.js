@@ -7,6 +7,8 @@ import decode from 'jwt-decode'
 
 
 const BucketList = () => {
+  console.log('bucketlist')
+
   const context = useContext(Context) 
   const [bucket, setBucket] = useState([context.ITEM_DATA])
   const decoded = decode(context.token)
