@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     color: '#8F573B',
     fontWeight: '700',
     fontSize: '1.5em',
+    marginTop: '5vw',
     marginBottom: 0,
   }
 }));

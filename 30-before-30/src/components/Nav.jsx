@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   linksContainer: {
-    width: '30vw',
+    width: '35vw',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',

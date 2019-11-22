@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     position: 'relative',
     height: 400,
-    width: 300,
+    width: '30vw',
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -125,7 +125,7 @@ export function HomeTile() {
           <span
             className={classes.imageSrc}
             style={{
-              backgroundImage: `url(${list.url})`,
+              backgroundImage: 'url("${list.url"})',
             }}
           />
           <span className={classes.imageBackdrop} />
