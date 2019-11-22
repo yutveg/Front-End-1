@@ -10,6 +10,7 @@ import UserDash from './components/UserDashboard/UserDash.js'
 import { SignUpPage } from './pages/SignUpPage';
 //import { Footer } from './components/Footer';
 import decode from 'jwt-decode'
+import { Provider } from './contexts/context';
 
 
 function App(props) {
@@ -18,21 +19,19 @@ function App(props) {
   
   const token  = localStorage.getItem('token')
   const decoded = decode(token)
-  //console.log(decoded)
+
+
   return (
-    <div className="App">
+    <div className="App">  
       <Nav /> 
-
       <Link to={`/users/${decoded.id}`}>USER DASH</Link>
-
       <Route path='/home' component={HomePage} />
       <Switch>
         <Route path="/home/:id" render={props => <Modal {...props} /> } /> 
-        
         <Route path={`/users/${decoded.id}`} component={UserDash} />
         <Route exact path='/sign-in' render={()=>props.currentUser
-        ?(<Redirect tp='/' />)
-        :<SignInPage />} />
+          ?(<Redirect tp='/' />)
+          :<SignInPage />} />
         <Route path='/sign-up' component={SignUpPage} />
         <Route path="/USERBUCKETLIST/:id" component={Modal} />
       </Switch>
