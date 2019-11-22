@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   tileTitle: {
     textAlign: 'center',
     letterSpacing: '2px',
-    color: '#8F573B',
+    color: '#5B7331',
     fontWeight: '700',
     fontSize: '1.5em',
     marginTop: '5vw',
