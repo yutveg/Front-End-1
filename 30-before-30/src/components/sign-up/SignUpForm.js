@@ -20,12 +20,6 @@ const SignUpForm = ({touched, errors, status}) => {
                 <Field type="text" name="username" placeholder="Username.." />
                 {touched.username && errors.username && <span className="errors">{errors.username}</span>}
             </div>
-
-            {/*<div>
-                <label htmlFor="email">EMAIL:</label>
-                <Field type="email" name="email" placeholder="Email.." />
-                {touched.email && errors.email && <span className="errors">{errors.email}</span>}
-            </div>*/}
             
             <div>
                 <label htmlFor="password">PASSWORD:</label>
@@ -47,20 +41,18 @@ const SignUpForm = ({touched, errors, status}) => {
 }
 
 const FormikSignUpForm = withFormik({
-    mapPropsToValues({ username, /*email,*/ password, displayname }) {
+    mapPropsToValues({ username, password, displayname }) {
         return {
             username: username || "",
-            //email: email || "",
             password: password || "",
             displayname: displayname || ""
         }
     },
-    // validationSchema: Yup.object().shape({
-    //     username: Yup.string().required(),
-    //     //email: Yup.string().required(),
-    //     password: Yup.string().required(),
-    //     displayname: Yup.string().required()
-    // }),
+    validationSchema: Yup.object().shape({
+        username: Yup.string().required(),
+        password: Yup.string().required(),
+        displayname: Yup.string().required()
+    }),
     handleSubmit(values) {
         console.log(values);
         axios
@@ -70,7 +62,7 @@ const FormikSignUpForm = withFormik({
             console.log(token);
         })
         .catch(error => console.log(error));
-        //history.push('/home')
+        // history.push('/home')
     }
 })(SignUpForm);
 
