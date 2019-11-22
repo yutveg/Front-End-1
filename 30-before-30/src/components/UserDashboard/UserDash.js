@@ -3,24 +3,24 @@ import axios from 'axios';
 import BucketList from './BucketList.js';
 import uhm from '../../assets/uhm.jpg';
 import testphotoforapp from '../../assets/testphotoforapp.jpg';
-import { Link, Route } from 'react-router-dom'
+//import { Link, Route } from 'react-router-dom'
 import AddItemForm from './AddItemForm.js';
 import CurrentUserContext from '../../contexts/current-user/current-user.context'
-
+import decode from 'jwt-decode'
 
 const UserDash = (props) => {
-    console.log(props)
+    //console.log(props)
     const [user, setUser] = useState({
         displayname: '',
     });
 
-    const id = props.match.params.id;
-
+    const token  = localStorage.getItem('token')
+    const decoded = decode(token)
     useEffect(() => {
         axios
-        .get(`https://project-30-before-30.herokuapp.com/api/users/${id}`)
+        .get(`https://project-30-before-30.herokuapp.com/api/users/${decoded.id}`)
         .then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             setUser(res.data);
         })
         .catch(err => {console.log(err)})
@@ -28,7 +28,7 @@ const UserDash = (props) => {
 
     const handleSubmit = () => {
         axios
-        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${id}`, true)
+        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${decoded.id}`, true)
         .then(res => {
             console.log(res.data);
             
@@ -39,7 +39,7 @@ const UserDash = (props) => {
     }
 
     return (
-        <div to={`/user/${id}`} className="user-dash-wrapper">
+        <div to={`/user/${decoded.id}`} className="user-dash-wrapper">
             <div className="user-dash-img"><img src={testphotoforapp} alt="User Header" /></div>
             <button onClick={handleSubmit} className="public-button">MAKE PUBLIC</button>
             <div className="user-dash-grid-container">
@@ -51,8 +51,7 @@ const UserDash = (props) => {
                     <BucketList />
                 </CurrentUserContext.Provider>
             </div>
-            <Route path={`/user/${id}/additem`} render={props => <AddItemForm id={id} /> } />
-            <Link to={`/user/${id}/additem`} className="user-dash-button">ADD BUCKETLIST ITEM</Link>
+            <AddItemForm />
         </div>
     )
 }

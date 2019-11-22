@@ -89,18 +89,18 @@ export const Footer = () => {
           <Logo className={classes.logo} />
         </Link>
         <div className={classes.socialCircles}>
-          <Link className={classes.link} href="https://www.facebook.com/">
+          <a className={classes.link} href="https://www.facebook.com/">
             {/* <FontAwesomeIcon icon={faFacebookF} className={classes.social} /> */}
-          </Link>
-          <Link className={classes.link} href="https://www.instagram.com/">
+          </a>
+          <a className={classes.link} href="https://www.instagram.com/">
             {/* <FontAwesomeIcon icon={faInstagram} className={classes.social} /> */}
-          </Link>
-          <Link className={classes.link} href="https://www.twitter.com/">
+          </a>
+          <a className={classes.link} href="https://www.twitter.com/">
             {/* <FontAwesomeIcon icon={faTwitter} className={classes.social} /> */}
-          </Link>
-          <Link className={classes.link} href="https://www.pinterest.com/">
+          </a>
+          <a className={classes.link} href="https://www.pinterest.com/">
             {/* <FontAwesomeIcon icon={faPinterestP} className={classes.social} /> */}
-          </Link>
+          </a>
         </div>
       </div>
 

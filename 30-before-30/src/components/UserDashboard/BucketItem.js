@@ -1,15 +1,15 @@
 import React from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth'
-import axios from 'axios'
+import decode from 'jwt-decode'
 const BucketItem = (props) => {
-    console.log(props)
-    const id = 2
     const idd = props.id
+    const token  = localStorage.getItem('token')
+    const decoded = decode(token)
+    //console.log(decoded)
 
-    const deleteItem = e => {
-        e.preventDefault();
+    const deleteItem = () => {
         axiosWithAuth()
-        .delete(`bucketlists/${id}/items/${idd}`)
+        .delete(`bucketlists/${decoded.id}/items/${idd}`)
         .then(res => {
             console.log(res)
         })

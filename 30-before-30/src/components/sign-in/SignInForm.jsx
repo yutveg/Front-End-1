@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -8,8 +8,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import decode from 'jwt-decode'
+
 // Components
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -79,11 +81,11 @@ const useStyles = makeStyles(theme => ({
 function LoginForm({ values, errors, touched }) {
   const classes = useStyles();
 
-  const [user, setUser] = useState({
-    username: '',
-    password: ''
-  });
-  const {isAuthenticated} = false;
+  // const [user, setUser] = useState({
+  //   username: '',
+  //   password: ''
+  // });
+  // const {isAuthenticated} = false;
 
 
   // const handleChange = e => {
@@ -148,8 +150,12 @@ const SignInForm = withFormik({
           console.log(values)
           const token = res.data.token
           console.log(token);
+          localStorage.removeItem('token')
+          localStorage.removeItem('username')
           localStorage.setItem('token', res.data.token)
-          localStorage.setItem('userId', res.data.userId)
+          localStorage.setItem('username', values.username)
+          localStorage.setItem('userId', decode(token).id)
+          
           resetForm();
           setSubmitting(false);
         })

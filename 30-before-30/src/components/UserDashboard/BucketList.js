@@ -1,19 +1,23 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, /*useContext,*/ useEffect } from 'react';
 import ItemsContext from '../../contexts/items/items.contexts'
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import BucketItem from './BucketItem'
+import decode from 'jwt-decode'
+
 
 
 const BucketList = () => {
-  const [CurrentUserContext, setCurrentUserContext] = useState(null)
+  //const [CurrentUserContext, setCurrentUserContext] = useState(null)
   const [bucket, setBucket] = useState([])
-  const id = 2
-
+  const token  = localStorage.getItem('token')
+  const decoded = decode(token)
+  console.log(decoded)
   useEffect(() => {
     const getBuckets = () => {
       axiosWithAuth()
-    .get(`bucketlists/${id}/`)
+    .get(`bucketlists/${decoded.id}/`)
     .then(res => {
+      console.log(res)
       setBucket(res.data)
     })
     .catch(err => console.log(err));
@@ -21,13 +25,13 @@ const BucketList = () => {
     getBuckets();
 
 
-    setCurrentUserContext()
-  }, []);
+    //setCurrentUserContext()
+  }, [decoded.id]);
 
 
 
 
-  console.log(bucket)
+  console.log(bucket.length ?bucket: null)
   return (
     <ItemsContext.Provider value={{bucket}}>
       <ul>
