@@ -24,14 +24,17 @@ const BucketItem = props => {
         .catch(err => console.log(err.message));
     }
 
-    const updateItem = () => {
-        axiosWithAuth()
-        .put(`bucketlists/${decoded.id}/items/${idd}`)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log(err.message));
-    }
+    // const updateItem = () => {
+    //     axiosWithAuth()
+    //     .put(`bucketlists/${decoded.id}/items/${idd}`,{
+    //         item
+    //     }
+    //     )
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(err => console.log(err.message));
+    // }
 
     return (
         <Consumer>
@@ -42,7 +45,7 @@ const BucketItem = props => {
                     <h2>{name}</h2>
                     <p>{description}</p>
                     <button onClick={deleteItem}>Complete</button> 
-                    <button onClick={updateItem}>Update</button>
+                    {/*<button onClick={updateItem}>Update</button> */}
                 </div>
             )}}
         </Consumer>

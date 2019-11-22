@@ -16,7 +16,7 @@ import decode from 'jwt-decode'
 
 
 function App(props) {
-  console.log('App')
+  //console.log('App')
   const context = useContext(Context) 
   const [bucket, setBucket] = useState([context.ITEM_DATA])
   const [user, setUser] = useState({
@@ -25,25 +25,16 @@ function App(props) {
     username:''
   })
 
-  // let decoded;
-  
-  // useEffect(() => {
-  //   axios
-  //     .post('https://project-30-before-30.herokuapp.com/api/auth/login', {username: "blue", password: "blue"})
-  //     .then(res => {
-  //       console.log(res.data)
-  //       localStorage.setItem('token', res.data.token)
-  //       // localStorage.setItem('username', username)
-  //       //localStorage.setItem('userId', decode(token).id)
-  //     })
-  //     //.then(decoded = decode(localStorage.getItem('token')))
-  //     .catch(err => {console.log(err)});
-  //     //console.log(decoded)
-  // },[])
-
+  const logIn = userData => {
+    // setUser({
+    //   userId:userData.userId,
+    //   token: userData.token,
+    //   username: userData.username
+    // })
+  }
 
   return (
-    <Provider value={{bucket, user}}>
+    <Provider value={{bucket, user, logIn}}>
       <div className="App">
         <Nav /> 
         <Link to={`/users/${user.userId}`}>USER DASH</Link>

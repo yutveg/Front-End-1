@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import Context, {Provder, Consumer} from '../../contexts/context'
 
 import axios from 'axios';
@@ -81,23 +81,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginForm({ values, errors, touched }) {
-  const {user} = useContext(Context);
-  console.log(user)
+  const [data, setData] = useState({})
+  // console.log(user)
   const classes = useStyles();
 
-  // const [user, setUser] = useState({
-  //   username: '',
-  //   password: ''
-  // });
-  // const {isAuthenticated} = false;
-
-
-  // const handleChange = e => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
-
-  return(
-    
+  return(   
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <p className={classes.title}>WELCOME BACK!</p>
@@ -147,7 +135,6 @@ const SignInForm = withFormik({
     password: Yup.string()
       .required("Password is required")
   }),
-
   handleSubmit(values, { resetForm, setSubmitting }) {
     axios
       .post('https://project-30-before-30.herokuapp.com/api/auth/login', values)
@@ -158,7 +145,11 @@ const SignInForm = withFormik({
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('username', values.username)
         localStorage.setItem('userId', decode(token).id)
-        
+        // setData({
+        //   userId:localStorage.getItem('userId'),
+        //   token: localStorage.getItem('token'),
+        //   username: localStorage.getItem('username')
+        // })
         resetForm();
         setSubmitting(false);
       })
@@ -166,7 +157,8 @@ const SignInForm = withFormik({
         console.log(err);
         setSubmitting(false);
       });
-    }
+  }
+  
   })(LoginForm);
 
 export default SignInForm;
