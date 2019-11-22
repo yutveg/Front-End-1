@@ -79,7 +79,7 @@ export const Footer = () => {
         <Link className={classes.link} to="/about">
           ABOUT
         </Link>
-        <Link className={classes.link} to="/user">
+        <Link className={classes.link} to='/user/:id'>
           MY LIST
         </Link>
       </div>
