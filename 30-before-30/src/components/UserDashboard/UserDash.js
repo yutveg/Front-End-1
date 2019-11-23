@@ -8,11 +8,12 @@ import AddItemForm from './AddItemForm.js';
 import {Provider} from '../../contexts/context'
 import decode from 'jwt-decode'
 
-const UserDash = () => {
+const UserDash = props => {
+    console.log(props)
     console.log('userdash')
 
-    const [isPublic, SetIsPublic] = useState(true)
-
+    const [isPublic, setIsPublic] = useState({public:true})
+   
     const [user, setUser] = useState({
         displayname: '',
     });
@@ -30,15 +31,15 @@ const UserDash = () => {
     }, [])
 
     const handleSubmit = () => {
+        const flip = !(isPublic.public)
+        setIsPublic({public:flip})
+
         axios
-        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${decoded.id}`, isPublic)
+        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${decoded.id}`,  isPublic)
         .then(res => {
             console.log(res.data);
-            
         })
-        .catch(err => {
-            console.log(err);
-        })
+        .catch(err => {console.log(err)})
     }
 
     return (

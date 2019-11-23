@@ -41,7 +41,7 @@ export function SignInPage(props) {
     username: localStorage.getItem('username'),
     userId: localStorage.getItem('userId')
   }
-  logIn(userData)
+  //logIn(userData)
 
 
   return (

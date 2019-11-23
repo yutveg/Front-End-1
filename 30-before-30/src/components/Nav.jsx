@@ -62,7 +62,7 @@ function Nav() {
           SIGN UP
         </Link>
         <Link className={classes.link} to={ifExists() 
-          ? `/user/${userId}` 
+          ? `/users/${userId}` 
           : '/user/NOID'}>
           MY LIST
         </Link>

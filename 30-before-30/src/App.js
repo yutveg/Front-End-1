@@ -24,24 +24,28 @@ function App(props) {
     token: '',
     username:''
   })
-
-  const logIn = userData => {
-    // setUser({
-    //   userId:userData.userId,
-    //   token: userData.token,
-    //   username: userData.username
-    // })
+  const userId = localStorage.getItem('userId')
+  const ifExists = () => {
+    if(typeof userId !== 'undefined' && user.userId !==userId && user.userId !== null){
+      console.log(userId)
+      setUser({
+        ...user,
+        userId:userId
+      })
+      }
   }
+  ifExists();
+
 
   return (
-    <Provider value={{bucket, user, logIn}}>
+    <Provider value={{bucket, user}}>
       <div className="App">
         <Nav /> 
         <Link to={`/users/${user.userId}`}>USER DASH</Link>
         <Route path='/home' component={HomePage} />
         <Switch>
           {/*<Route path="/home/:id" render={props => <Modal {...props} /> } /> */}
-          <Route path={`/users/${user.userId}`} component={UserDash} />
+          <Route path={`/users/${6}`} component={UserDash} />
           <Route exact path='/sign-in' render={()=>props.currentUser
             ?(<Redirect tp='/' />)
             :<SignInPage />} />
