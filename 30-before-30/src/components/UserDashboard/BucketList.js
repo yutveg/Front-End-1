@@ -36,7 +36,6 @@ const BucketList = () => {
 
   console.log(bucket)
   return (
-    <Provider value={{bucket}}>
       <ul>
         {bucket.map(b => (
         <li className="card" key={b.name}>
@@ -44,7 +43,6 @@ const BucketList = () => {
         </li>
         ))} 
       </ul>
-    </Provider>
   )
 }
 

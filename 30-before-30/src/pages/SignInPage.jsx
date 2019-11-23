@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import Context, {Provder, Consumer} from '../contexts/context'
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,9 +32,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export function SignInPage(props) {
-  console.log(props)
+  //console.log(props)
   const classes = useStyles();
+  const {user, logIn} = useContext(Context);
 
+  const userData = {
+    token: localStorage.getItem('token'),
+    username: localStorage.getItem('username'),
+    userId: localStorage.getItem('userId')
+  }
+  //logIn(userData)
 
 
   return (

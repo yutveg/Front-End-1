@@ -8,14 +8,16 @@ import AddItemForm from './AddItemForm.js';
 import {Provider} from '../../contexts/context'
 import decode from 'jwt-decode'
 
-const UserDash = () => {
+const UserDash = props => {
+    console.log(props)
     console.log('userdash')
 
+    const [isPublic, setIsPublic] = useState({public:true})
+   
     const [user, setUser] = useState({
         displayname: '',
     });
-    const ITEM_DATA = []
-
+    const ITEM_DATA = [] 
     const token  = localStorage.getItem('token')
     const decoded = decode(token)
     useEffect(() => {
@@ -29,15 +31,15 @@ const UserDash = () => {
     }, [])
 
     const handleSubmit = () => {
+        const flip = !(isPublic.public)
+        setIsPublic({public:flip})
+
         axios
-        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${decoded.id}`, true)
+        .put(`https://project-30-before-30.herokuapp.com/api/bucketlists/${decoded.id}`,  isPublic)
         .then(res => {
             console.log(res.data);
-            
         })
-        .catch(err => {
-            console.log(err);
-        })
+        .catch(err => {console.log(err)})
     }
 
     return (
@@ -49,9 +51,7 @@ const UserDash = () => {
                     <img className="prof-pic" src={uhm} alt="User Headshot" />
                     <h1>{user.displayname}</h1>
                 </div>
-                <Provider value={{ token, ITEM_DATA}}>
                     <BucketList />
-                </Provider>
             </div>
             <AddItemForm />
         </div>

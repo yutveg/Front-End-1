@@ -5,7 +5,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 
-console.log("Main Index")
+//console.log("Main Index")
 ReactDOM.render(
       <Router>
         <App /> 

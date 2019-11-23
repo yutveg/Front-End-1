@@ -16,7 +16,7 @@ import decode from 'jwt-decode'
 
 
 function App(props) {
-  console.log('App')
+  //console.log('App')
   const context = useContext(Context) 
   const [bucket, setBucket] = useState([context.ITEM_DATA])
   const [user, setUser] = useState({
@@ -24,22 +24,17 @@ function App(props) {
     token: '',
     username:''
   })
-
-  // let decoded;
-  
-  // useEffect(() => {
-  //   axios
-  //     .post('https://project-30-before-30.herokuapp.com/api/auth/login', {username: "blue", password: "blue"})
-  //     .then(res => {
-  //       console.log(res.data)
-  //       localStorage.setItem('token', res.data.token)
-  //       // localStorage.setItem('username', username)
-  //       //localStorage.setItem('userId', decode(token).id)
-  //     })
-  //     //.then(decoded = decode(localStorage.getItem('token')))
-  //     .catch(err => {console.log(err)});
-  //     //console.log(decoded)
-  // },[])
+  const userId = localStorage.getItem('userId')
+  const ifExists = () => {
+    if(typeof userId !== 'undefined' && user.userId !==userId && user.userId !== null){
+      console.log(userId)
+      setUser({
+        ...user,
+        userId:userId
+      })
+      }
+  }
+  ifExists();
 
 
   return (
@@ -50,7 +45,7 @@ function App(props) {
         <Route path='/home' component={HomePage} />
         <Switch>
           {/*<Route path="/home/:id" render={props => <Modal {...props} /> } /> */}
-          <Route path={`/users/${user.userId}`} component={UserDash} />
+          <Route path={`/users/${6}`} component={UserDash} />
           <Route exact path='/sign-in' render={()=>props.currentUser
             ?(<Redirect tp='/' />)
             :<SignInPage />} />

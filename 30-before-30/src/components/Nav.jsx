@@ -31,9 +31,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Nav() {
+  console.log('nav')
   const classes = useStyles();
-
-  return (
+  
+  const userId = localStorage.getItem('userId')
+  const ifExists = () => {
+    if(typeof userId !== 'undefined'){
+      console.log(userId)
+      }
+      return (typeof userId !== 'undefined')
+  }
+  ifExists();
+      return (
     <div className={classes.root}>
       <Link className={classes.link} to="/home">
         <Logo className={classes.logo} />
@@ -52,7 +61,9 @@ function Nav() {
         <Link className={classes.link} to="/sign-up">
           SIGN UP
         </Link>
-        <Link className={classes.link} to='/user/:id'>
+        <Link className={classes.link} to={ifExists() 
+          ? `/users/${userId}` 
+          : '/user/NOID'}>
           MY LIST
         </Link>
       </div>
