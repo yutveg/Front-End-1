@@ -145,11 +145,6 @@ const SignInForm = withFormik({
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('username', values.username)
         localStorage.setItem('userId', decode(token).id)
-        // setData({
-        //   userId:localStorage.getItem('userId'),
-        //   token: localStorage.getItem('token'),
-        //   username: localStorage.getItem('username')
-        // })
         resetForm();
         setSubmitting(false);
       })
